@@ -1,12 +1,17 @@
 ﻿using System;
 using System.IO;
 
+
 namespace proyecto
 {
 	public class readFile
 	{
+        
         public static void Read()
         {
+            
+            
+            List<string> txt = new List<string>();
             string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
 
             // Abre el archivo utilizando StreamReader
@@ -16,14 +21,28 @@ namespace proyecto
                 string line;
                 while ((line = reader.ReadLine()) != null)
                 {
-                    // Procesa la línea leída del archivo
-                    Console.WriteLine(line);
+                    // Guardar cada línea en una lista para su uso posterior
+                    txt.Add(line);
                 }
-            } 
+            }
 
-            // Cierra el archivo
-            Console.ReadLine();
+            if (txt[0] == "SETS")
+            {
+                txt.RemoveAt(0);
+                string line = txt[0];
+
+                identificador.getIdentificador(line);
+
+                
+
+
+           
+                
+            }
+     
         }
+
+        
     }
 }
 

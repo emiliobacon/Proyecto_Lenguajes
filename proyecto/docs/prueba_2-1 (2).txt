@@ -1,0 +1,39 @@
+
+TOKENS             
+     TOKEN 1 = DIGITO  DIGITO *                                 
+     TOKEN  4  ='='
+     
+
+     TOKEN  6  = 			'<'
+     TOKEN  7  = '>'
+     TOKEN  8  = '>''='
+
+
+
+
+     TOKEN  9  							=	 '<''='       
+     TOKEN  10  = '+'
+     TOKEN  						11  = '-'
+   
+
+
+
+ACTIONS
+RESERVADAS()
+{
+     18 = 'PROGRAM'
+     19 = 'INCLUDE'
+     20 = 'CONST'
+     21 = 'TYPE'
+     22 = 'VAR'
+     23 = 'RECORD'
+     24 = 'ARRAY'
+     25 = 'OF'
+     26 = 'PROCEDURE'
+ 
+
+}
+
+ERROR = 54
+
+

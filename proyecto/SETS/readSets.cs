@@ -13,6 +13,13 @@ namespace proyecto
 				case "\tLETRA":
 					checkLETRA.checkLetra(rule);
 					break;
+				case "\tDIGITO":
+					checkDIGITO.checkDigito(rule);
+					break;
+				case "\tCHARSET":
+					checkCHARSET.checkCharset(rule);
+					break;
+
 			}
         }
 

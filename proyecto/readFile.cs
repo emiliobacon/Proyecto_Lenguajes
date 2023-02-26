@@ -32,11 +32,6 @@ namespace proyecto
                 string line = txt[0];
 
                 identificador.getIdentificador(line);
-
-                
-
-
-           
                 
             }
      

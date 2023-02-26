@@ -3,13 +3,14 @@ namespace proyecto
 {
 	public class identificador
 	{
-        public static string getIdentificador(string line)
+        public static void getIdentificador(string line)
         {
             char limitante = '=';
             char blankSpace = ' ';
 
             string identificador = "";
             string identificadorReal = "";
+            string reglaEvaluar = "";
 
             int index = line.IndexOf(limitante);
             identificador = line.Substring(0, index);
@@ -17,10 +18,12 @@ namespace proyecto
             int index2 = identificador.IndexOf(blankSpace);
             identificadorReal = identificador.Substring(0, index2);
 
-            readSets.checkSETS(identificadorReal, line);
+            reglaEvaluar = line.Substring( index + 1);
 
-            return (line);
-        }		
+            readSets.checkSETS(identificadorReal, reglaEvaluar);
+
+
+            }		
 	}
 }
 

@@ -197,6 +197,10 @@ namespace proyecto
                         }
                     }
                 }
+                else
+                {
+                    Console.WriteLine("Se esperaba otro valor en la línea " + b);
+                }
 
                 if (c == 1)
                 {

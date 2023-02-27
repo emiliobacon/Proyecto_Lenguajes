@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
+            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/prueba_4-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader

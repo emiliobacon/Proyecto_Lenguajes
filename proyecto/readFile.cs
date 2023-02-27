@@ -13,7 +13,7 @@ namespace proyecto
             
             
             List<string> txt = new List<string>();
-            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
+            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\prueba_2-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -50,8 +50,15 @@ namespace proyecto
           while(b !=a)
             {
                 b++;
-                //Verifica que la palabra "ACTIONS" esté 
-                if(Convert.ToString(txt[b].Trim()) == "ACTIONS")
+                if (Convert.ToString(txt[b].Trim()) == "SETS")
+                {
+
+                }
+
+                if(Convert.ToString(txt[b].Trim()) =="TOKENS")
+                
+                    //Verifica que la palabra "ACTIONS" esté 
+                    if (Convert.ToString(txt[b].Trim()) == "ACTIONS")
                 {
                     while (b != a)
                     {
@@ -71,12 +78,16 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]|[\t]) = '([a-z]|[A-Z])*'$"))
                                         {
                                             Console.WriteLine("SI");
                                         }
+                                        else
+                                        {
+                                            Console.WriteLine("error");
+                                        }
 
-
+                                        
                                         if (Convert.ToString(txt[b].Trim()) == "}")
                                         {
                                             //Console.WriteLine("Ha ocurrido un error en la línea " + b);
@@ -199,7 +210,7 @@ namespace proyecto
                 }
                 else
                 {
-                    Console.WriteLine("Se esperaba otro valor en la línea " + b);
+                   // Console.WriteLine("Se esperaba otro valor en la línea " + b);
                 }
 
                 if (c == 1)

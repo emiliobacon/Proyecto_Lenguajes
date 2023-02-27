@@ -36,21 +36,18 @@ namespace proyecto
 
                   identificador.getIdentificador(line);
 
-
-
-
-
-
               }*/
+
             //TOKENS 
            
             
 
             // ACTIONS
-            Stack<string> stack = new Stack<string>();
-            int c = 0;
-            int b = 0;
-            int d= 0;
+           
+            int c = 0;//Salida
+            int b = 0;//Recorre
+            int d= 0;//salida
+
           while(b <=a)
             {
                 
@@ -96,10 +93,7 @@ namespace proyecto
                     }
 
                 }
-                else
-                {
-                    
-                }
+                
 
 
                 //Verifica que la palabra "ACTIONS" esté 

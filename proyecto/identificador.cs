@@ -3,7 +3,7 @@ namespace proyecto
 {
 	public class identificador
 	{
-        public static void getIdentificador(string line)
+        public static void getIdentificador(string line, int b)
         {
             char limitante = '=';
             char blankSpace = ' ';
@@ -20,7 +20,7 @@ namespace proyecto
 
             reglaEvaluar = line.Substring( index + 1);
 
-            readSets.checkSETS(identificadorReal, reglaEvaluar);
+            readSets.checkSETS(identificadorReal, reglaEvaluar, b);
 
 
             }		

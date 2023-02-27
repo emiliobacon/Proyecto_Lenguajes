@@ -7,16 +7,16 @@ namespace proyecto
 	{
         
        
-        public static void checkDigito(string line)
+        public static void checkDigito(string line, int b)
         {
             
-            if (Regex.IsMatch(line, "(( )*'[0-9]'([..]|[+]))+"))
+            if (Regex.IsMatch(line, "(( )*'[0-9]'([..]|[+]))+$"))
             {
                 Console.WriteLine("Correcto");
             }
             else
             {
-                Console.WriteLine("No es correcto");
+                Console.WriteLine("No es correcto, error en linea: " + b.ToString());
             }
 
             //

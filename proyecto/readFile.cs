@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
+            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/prueba_3-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -65,7 +65,7 @@ namespace proyecto
                             break;
                         }
 
-                        identificador.getIdentificador(txt[b]);
+                        identificador.getIdentificador(txt[b],b);
                     }
                 }
 
@@ -103,7 +103,7 @@ namespace proyecto
                 }
                 else
                 {
-
+                    Console.WriteLine("Error en la línea " + (b + 1));
                 }
 
 

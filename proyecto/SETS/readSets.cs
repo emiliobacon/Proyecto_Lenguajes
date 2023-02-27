@@ -6,18 +6,18 @@ namespace proyecto
 {
 	public class readSets
 	{
-		public static void checkSETS(string id, string rule)
+		public static void checkSETS(string id, string rule, int b)
 		{
 			switch (id)
 			{
 				case "\tLETRA":
-					checkLETRA.checkLetra(rule);
+					checkLETRA.checkLetra(rule, b);
 					break;
 				case "\tDIGITO":
-					checkDIGITO.checkDigito(rule);
+					checkDIGITO.checkDigito(rule, b);
 					break;
 				case "\tCHARSET":
-					checkCHARSET.checkCharset(rule);
+					checkCHARSET.checkCharset(rule, b);
 					break;
 
 			}

@@ -1,6 +1,6 @@
 SETS
 	LETRA   = 'A'..'Z'+'a'..'z'+'_'.. 'b'
-	DIGITO  = '0'..'9'
+	DIGITO  = '123'..'456'
 	CHARSET = CHR(32)..CHR(254)
 TOKENS
 	TOKEN 1= DIGITO DIGITO *

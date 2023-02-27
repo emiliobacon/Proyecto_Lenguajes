@@ -8,7 +8,7 @@ namespace proyecto
 
 		public static void checkLetra(string line)
 		{
-			if (Regex.IsMatch(line, "(( )*'[A-Z]|[a-z]|[_]'([..]|[+]))+"))
+			if (Regex.IsMatch(line, "(( )*['][A-Z]|[a-z]|[_][']([..]|[+]))+"))
 			{
 				Console.WriteLine("Correcto");
 			}

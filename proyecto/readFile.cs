@@ -50,12 +50,12 @@ namespace proyecto
           while(b !=a)
             {
                 b++;
-                if (Convert.ToString(txt[b].Trim()) == "SETS")
+              /*  if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
 
-                }
+                }*/
 
-                if(Convert.ToString(txt[b].Trim()) =="TOKENS")
+               // if(Convert.ToString(txt[b].Trim()) =="TOKENS")
                 
                     //Verifica que la palabra "ACTIONS" esté 
                     if (Convert.ToString(txt[b].Trim()) == "ACTIONS")
@@ -78,13 +78,17 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]|[\t]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "([\t]|[ ])*([0-9][0-9]|[\t])([\t]|[ ])*=([\t]|[ ])*'([a-z]|[A-Z])*([\t]|[ ])*'$"))
                                         {
                                             Console.WriteLine("SI");
                                         }
+                                        else if(Convert.ToString(txt[b].Trim()) == "" || Convert.ToString(txt[b].Trim()) == " ")
+                                        {
+
+                                        }
                                         else
                                         {
-                                            Console.WriteLine("error");
+                                            //Console.WriteLine("error");
                                         }
 
                                         
@@ -127,7 +131,7 @@ namespace proyecto
 
 
                         }
-                        else if(Regex.IsMatch(txt[b],"([A-Z]*[()])"))
+                        else if(Regex.IsMatch(txt[b], "(([\t]|[ ])*[A-Z]*([\t]|[ ])*[()]([\t]|[ ])*)"))
                         {
                             Console.WriteLine("SI entró al segundo");
                             while (b != a)
@@ -141,7 +145,7 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([a-z]|[A-Z])*'([\t]|[ ])*$"))
                                         {
                                             Console.WriteLine("SI");
                                         }
@@ -184,7 +188,7 @@ namespace proyecto
 
                             }
                         }
-                        else if(Convert.ToString(txt[b].Trim()) == ""|| Convert.ToString(txt[b].Trim()) == " "||Convert.ToString(txt[b].Trim()) == "\n"|| Convert.ToString(txt[b].Trim()) == "ACTIONS")
+                        else if(Convert.ToString(txt[b].Trim()) == "" || Convert.ToString(txt[b].Trim()) == " "||Convert.ToString(txt[b].Trim()) == "\n"|| Convert.ToString(txt[b].Trim()) == "ACTIONS")
                         {
                             //no pasa nada
                         }

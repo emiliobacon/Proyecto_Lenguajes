@@ -7,7 +7,7 @@ namespace proyecto
     {
         public static void checkCharset(string line)
         {
-            if (Regex.IsMatch(line, "(( )*'[CHR]'()([..]|[+]))+"))
+            if (Regex.IsMatch(line, "(( )*CHR[(]([0-9]+)[)]([..]|[+]))+"))
             {
                 Console.WriteLine("Correcto");
             }

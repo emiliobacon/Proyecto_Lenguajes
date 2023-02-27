@@ -5,8 +5,8 @@ namespace proyecto
 	{
         public static void getIdentificador(string line, int b)
         {
-            char limitante = '=';
-            char blankSpace = ' ';
+            string limitante = "=";
+            string blankSpace = " ";
 
             string identificador = "";
             string identificadorReal = "";
@@ -18,7 +18,8 @@ namespace proyecto
                 identificador = line.Substring(0, index);
 
                 int index2 = identificador.IndexOf(blankSpace);
-                identificadorReal = identificador.Substring(0, index2);
+                identificadorReal = identificador.Trim();
+                    //Substring(0, index2);
 
                 reglaEvaluar = line.Substring(index + 1);
 

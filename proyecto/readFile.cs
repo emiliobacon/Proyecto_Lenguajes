@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
+            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -128,13 +128,11 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "([\t]|[ ])*([0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$"))
                                         {
-                                            Console.WriteLine("SI");
+                                            Console.WriteLine("ACTION Correcto");
                                         }
-
-
-                                        if (Convert.ToString(txt[b].Trim()) == "}")
+                                        else if (Convert.ToString(txt[b].Trim()) == "}")
                                         {
                                             //Console.WriteLine("Ha ocurrido un error en la línea " + b);
                                             //c = 1;
@@ -142,13 +140,20 @@ namespace proyecto
                                             break;
 
                                         }
-
-
-                                        if (Convert.ToString(txt[b].Trim()) == "{")
+                                        else if (Convert.ToString(txt[b].Trim()) == "{")
                                         {
-                                            Console.WriteLine("Ha ocurrido un error en la línea " + b + 1);
+                                            Console.WriteLine("Ha ocurrido un error en la línea " + (b + 1));
                                             c = 1;
                                             break;
+
+                                        }
+                                        else if (Convert.ToString(txt[b].Trim()) == "" || Convert.ToString(txt[b].Trim()) == " " || Convert.ToString(txt[b].Trim()) == "\n" || Convert.ToString(txt[b].Trim()) == "ACTIONS")
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
 
                                         }
 
@@ -168,7 +173,7 @@ namespace proyecto
 
                             }
                         }
-                        else if (Regex.IsMatch(txt[b], "([A-Z]*[()])"))
+                        else if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[A-Z]*([\t]|[ ])*[()])([\t]|[ ])*$"))
                         {
                             Console.WriteLine("SI entró al segundo");
                             while (b != a)
@@ -182,13 +187,11 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([\t]|[ ])*([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$")) 
                                         {
-                                            Console.WriteLine("SI");
+                                            Console.WriteLine("ACTION Correcto");
                                         }
-
-
-                                        if (Convert.ToString(txt[b].Trim()) == "}")
+                                        else if (Convert.ToString(txt[b].Trim()) == "}")
                                         {
                                             //Console.WriteLine("Ha ocurrido un error en la línea " + b);
                                             //c = 1;
@@ -196,14 +199,21 @@ namespace proyecto
                                             break;
 
                                         }
-
-
-                                        if (Convert.ToString(txt[b].Trim()) == "{")
+                                        else if (Convert.ToString(txt[b].Trim()) == "{")
                                         {
                                             Console.WriteLine("Ha ocurrido un error en la línea " + b + 1);
                                             c = 1;
                                             break;
 
+                                        }
+                                        else if (Convert.ToString(txt[b].Trim()) == "" || Convert.ToString(txt[b].Trim()) == " " || Convert.ToString(txt[b].Trim()) == "\n" || Convert.ToString(txt[b].Trim()) == "ACTIONS")
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                                           
                                         }
 
                                     }
@@ -231,7 +241,7 @@ namespace proyecto
                         }
                         //************************ PARTE DE LOS ERRORES
 
-                        else if (Regex.IsMatch(txt[b], "ERROR = [0-9][0-9]"))
+                        else if (Regex.IsMatch(txt[b], "([\t]|[ ])*ERROR([\t]|[ ])*=([\t]|[ ])*[0-9][0-9]([\t]|[ ])*"))
                         {
                             //No pasa nada, es un error
                         }

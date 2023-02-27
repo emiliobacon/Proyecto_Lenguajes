@@ -194,7 +194,7 @@ namespace proyecto
                         }
                         //************************ PARTE DE LOS ERRORES
 
-                        else if(Regex.IsMatch(txt[b], "ERROR = [0-9][0-9]"))
+                        else if(Regex.IsMatch(txt[b], "([\t]|[ ])*ERROR([\t]|[ ])*=([\t]|[ ])*[0-9][0-9]([\t]|[ ])*"))
                         {
                             //No pasa nada, es un error
                         }

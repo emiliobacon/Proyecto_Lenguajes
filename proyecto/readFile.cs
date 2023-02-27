@@ -153,7 +153,7 @@ namespace proyecto
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                                            Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
 
                                         }
 
@@ -201,7 +201,7 @@ namespace proyecto
                                         }
                                         else if (Convert.ToString(txt[b].Trim()) == "{")
                                         {
-                                            Console.WriteLine("Ha ocurrido un error en la línea " + b + 1);
+                                            Console.WriteLine("Ha ocurrido un error en la línea " + (b + 1));
                                             c = 1;
                                             break;
 
@@ -212,7 +212,7 @@ namespace proyecto
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                                            Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
                                            
                                         }
 
@@ -221,7 +221,7 @@ namespace proyecto
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                                    Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
                                 }
                                 if (d == 1)
                                 {
@@ -249,7 +249,7 @@ namespace proyecto
                         //**************************
                         else
                         {
-                            Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                            Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
                         }
                         b++;
 
@@ -261,7 +261,7 @@ namespace proyecto
                 }
                 else
                 {
-                    Console.WriteLine("Se esperaba otro valor en la línea " + b + 1);
+                    Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
 
                     break;
                 }

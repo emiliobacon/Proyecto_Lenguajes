@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
+            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -29,25 +29,8 @@ namespace proyecto
                 }
             }
 
-            /*  if (txt[0] == "SETS")
-              {
-                  txt.RemoveAt(0);
-                  string line = txt[0];
-
-                  identificador.getIdentificador(line);
-
-
-
-
-
-
-              }*/
-            //TOKENS 
-
-
-
-            // ACTIONS
-            Stack<string> stack = new Stack<string>();
+           
+           
             int c = 0;
             int b = 0;
             int d = 0;

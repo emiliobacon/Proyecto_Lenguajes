@@ -57,7 +57,17 @@ namespace proyecto
 
                 if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
-                    //proc Emilio
+                    while (b != a)
+                    {
+                        b++;
+                        if (Convert.ToString(txt[b].Trim()) == "TOKENS")
+                        {
+                            while (true)
+                            {
+
+                            }
+                        }
+                    }
                 }
 
                 if (Convert.ToString(txt[b].Trim()) == "TOKENS")

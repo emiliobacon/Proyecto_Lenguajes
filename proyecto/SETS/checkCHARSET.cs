@@ -9,7 +9,8 @@ namespace proyecto
         {
             if (Regex.IsMatch(line, "(( )*CHR[(]([0-9]+)[)]([..]|[+]))+"))
             {
-                Console.WriteLine("Correcto");
+                int lineNumber = b + 1;
+                Console.WriteLine("SET valido linea " + lineNumber);
             }
             else
             {

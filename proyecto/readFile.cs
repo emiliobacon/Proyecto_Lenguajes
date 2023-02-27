@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/prueba_4-1 (2).txt";
+            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/prueba_1-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -37,9 +37,13 @@ namespace proyecto
             int e = 0;//  Variable que me indicará si se encontró al menos 1 error
             while (b <= a)
             {
+                if (Convert.ToString(txt[b].Trim()) == "")
+                {
+                    b++;
+                    
+                }
 
-
-                if (Convert.ToString(txt[b].Trim()) == "SETS")
+                    if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
                     while (b != a)
                     {

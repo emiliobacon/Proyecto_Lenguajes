@@ -19,8 +19,12 @@ namespace proyecto
 				case "\tCHARSET":
 					checkCHARSET.checkCharset(rule, b);
 					break;
+				default:
+					Console.WriteLine("Error en linea: " + (b + 1));
+					break;
 
 			}
+
         }
 
 		 

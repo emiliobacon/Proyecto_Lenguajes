@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = @"C:\Users\megan\OneDrive\Escritorio\Archivos\GRAMATICA2.txt";
+            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -62,11 +62,10 @@ namespace proyecto
                         b++;
                         if (Convert.ToString(txt[b].Trim()) == "TOKENS")
                         {
-                            while (true)
-                            {
-
-                            }
+                            break;
                         }
+
+                        identificador.getIdentificador(txt[b]);
                     }
                 }
 

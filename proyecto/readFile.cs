@@ -73,7 +73,6 @@ namespace proyecto
                         //Expresión regular
                         string expresionRgular = "^((TOKEN( |\\t)*[0-9]([0-9])*( |\\t)*=( |\\t)*)( |\\t)*(('[ -~\\x80-\\xFF]')*|([A-Z])*|( |\\t)*|(\\+|\\*|\\{|\\}|\\(([A-Z]|( |\\t)|(\\+|\\*|\\{|\\}|\\|)*)*\\)|\\|)*)*)$";
                         string cadenaVacia = @"^$";
-                        string expresionRegularTokens = @"^TOKENS$";
                         string input = Convert.ToString(txt[b].Trim());
                         Match match = Regex.Match(input, expresionRgular);
 
@@ -84,10 +83,7 @@ namespace proyecto
                         }
                         else
                         {
-                            int index = match.Index;
                             int lineNumber = b+1;
-
-
 
                             //Console.WriteLine("token invalido linea " + i);
                             Console.WriteLine("Error en la línea " + lineNumber);
@@ -162,11 +158,6 @@ namespace proyecto
 
                                
                             }
-                            
-                            
-
-
-
                         }
                         else if(Regex.IsMatch(txt[b], "^([\t]|[ ])*([A-Z]*[()])([\t]|[ ])*$"))
                         {

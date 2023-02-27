@@ -5,7 +5,8 @@ namespace proyecto
 {
 	public class checkDIGITO
 	{
-        public static void checkDigito(string line)
+        public static
+            void checkDigito(string line)
         {
             if (Regex.IsMatch(line, "(( )*'[0-9]'([..]|[+]))+"))
             {

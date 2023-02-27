@@ -8,7 +8,8 @@ namespace proyecto
 	{
         
         public static void Read()
-        {             
+        {
+            int contador = 1;
             List<string> txt = new List<string>();
             string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
 
@@ -21,21 +22,28 @@ namespace proyecto
                 {
                     // Guardar cada línea en una lista para su uso posterior
                     txt.Add(line);
+                    contador++;
                 }
             }
+
 
             if (txt[0] == "SETS")
             {
-                while (txt[0] != "TOKENS")
-                {
-                    txt.RemoveAt(0);
-                    string line = txt[0];
+                while (contador != 0)
+                { 
+                    if (txt[0] != "TOKENS")
+                    {
+                        txt.RemoveAt(0);
+                        string line = txt[0];
 
-                    identificador.getIdentificador(line);
+                        identificador.getIdentificador(line);
+                    }
                 }
-                
-                
+
+
             }
+            
+            
      
         }
 

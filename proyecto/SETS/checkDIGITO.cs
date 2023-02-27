@@ -10,8 +10,7 @@ namespace proyecto
         public static void checkDigito(string line)
         {
             
-            
-            if (Regex.IsMatch(line, "^\\\"[0-9]+(\\.[0-9]+|\\+)[0-9]+\\\"((\\.[0-9]+|\\+)[0-9]+)*$\n"))
+            if (Regex.IsMatch(line, "(( )*'[0-9]'([..]|[+]))+"))
             {
                 Console.WriteLine("Correcto");
             }
@@ -20,7 +19,7 @@ namespace proyecto
                 Console.WriteLine("No es correcto");
             }
 
-
+            //
             //'0'..'9'
 
         }

@@ -12,7 +12,8 @@ namespace proyecto
             
             if (Regex.IsMatch(line, "(( )*'[0-9]'([..]|[+]))+"))
             {
-                Console.WriteLine("Correcto");
+                int lineNumber = b + 1;
+                Console.WriteLine("SET valido linea " + lineNumber);
             }
             else
             {

@@ -10,7 +10,8 @@ namespace proyecto
 		{
 			if (Regex.IsMatch(line, "(( )*['][A-Z]|[a-z]|[_][']([..]|[+]))+"))
 			{
-				Console.WriteLine("Correcto");
+				int lineNumber = b + 1;
+				Console.WriteLine("SET valido linea " + lineNumber);
 			}
 			else
 			{

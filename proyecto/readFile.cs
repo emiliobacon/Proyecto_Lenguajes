@@ -13,7 +13,7 @@ namespace proyecto
 
 
             List<string> txt = new List<string>();
-            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
+            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -29,28 +29,12 @@ namespace proyecto
                 }
             }
 
-            /*  if (txt[0] == "SETS")
-              {
-                  txt.RemoveAt(0);
-                  string line = txt[0];
-
-                  identificador.getIdentificador(line);
-
-
-
-
-
-
-              }*/
-            //TOKENS 
-
-
-
-            // ACTIONS
-            Stack<string> stack = new Stack<string>();
-            int c = 0;
-            int b = 0;
-            int d = 0;
+           
+           
+            int c = 0; // Variable para salir de los whiles
+            int b = 0;//  Variable que recorre la lista con el while
+            int d = 0;//  Variable para salir de algunos whiles
+            int e = 0;//  Variable que me indicará si se encontró al menos 1 error
             while (b <= a)
             {
 
@@ -91,7 +75,8 @@ namespace proyecto
 
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
-                            Console.WriteLine("token valido linea " + b);
+                            int lineNumber = b + 1;
+                            Console.WriteLine("TOKEN valido linea " + lineNumber);
                         }
                         else
                         {
@@ -133,7 +118,8 @@ namespace proyecto
 
                                         if (Regex.IsMatch(txt[b], "([\t]|[ ])*([0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$"))
                                         {
-                                            Console.WriteLine("ACTION Correcto");
+                                            int lineNumber = b + 1;
+                                            Console.WriteLine("ACTION valido linea " + lineNumber);
                                         }
                                         else if (Convert.ToString(txt[b].Trim()) == "}")
                                         {
@@ -178,7 +164,7 @@ namespace proyecto
                         }
                         else if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[A-Z]*([\t]|[ ])*[()])([\t]|[ ])*$"))
                         {
-                            Console.WriteLine("SI entró al segundo");
+                            //Console.WriteLine("SI entró al segundo");
                             while (b != a)
                             {
                                 b++;
@@ -192,7 +178,8 @@ namespace proyecto
 
                                         if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([\t]|[ ])*([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$")) 
                                         {
-                                            Console.WriteLine("ACTION Correcto");
+                                            int lineNumber = b + 1;
+                                            Console.WriteLine("ACTION valido linea " + lineNumber);
                                         }
                                         else if (Convert.ToString(txt[b].Trim()) == "}")
                                         {
@@ -246,7 +233,10 @@ namespace proyecto
 
                         else if (Regex.IsMatch(txt[b], "([\t]|[ ])*ERROR([\t]|[ ])*=([\t]|[ ])*[0-9][0-9]([\t]|[ ])*"))
                         {
+                            e++;
                             //No pasa nada, es un error
+                            int lineNumber = b + 1;
+                            Console.WriteLine("ERROR valido linea " + lineNumber);
                         }
 
                         //**************************
@@ -276,8 +266,12 @@ namespace proyecto
 
                 b++;
             }
-
-            Console.WriteLine("El proceso terminó correctamente");
+            if(e==0)
+            {
+                int lineNumber = b + 1;
+                Console.WriteLine("Eror en la línea: " + lineNumber+". Se necesita al menos un error en la gramatica.");
+            }
+            Console.WriteLine("El proceso de lectura terminó.");
             //  b++;
         }
 

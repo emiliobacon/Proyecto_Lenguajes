@@ -9,7 +9,8 @@ namespace proyecto
         
         public static void Read()
         {
-            int contador = 1;
+            int contador = 0;
+            int i = 0;
             List<string> txt = new List<string>();
             string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
 
@@ -27,22 +28,7 @@ namespace proyecto
             }
 
 
-            if (txt[0] == "SETS")
-            {
-                while (contador != 0)
-                { 
-                    if (txt[0] != "TOKENS")
-                    {
-                        txt.RemoveAt(0);
-                        string line = txt[0];
-
-                        identificador.getIdentificador(line);
-                    }
-                }
-
-
-            }
-            
+           
             
      
         }

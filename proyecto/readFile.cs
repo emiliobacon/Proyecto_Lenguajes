@@ -13,7 +13,7 @@ namespace proyecto
             
             
             List<string> txt = new List<string>();
-            string filePath = @"C:\Users\megan\OneDrive\Escritorio\Archivos\GRAMATICA2.txt";
+            string filePath = @"C:\Users\Roberto Moya\Desktop\ProyectoAutomatas\proyecto\docs\prueba_2-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -123,7 +123,7 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "([0-9][0-9]) = '([a-z]|[A-Z])*'$"))
+                                        if (Regex.IsMatch(txt[b], "^([\t]|[ ])*([0-9][0-9])([\t]|[ ])*=([\t]|[ ])*[']([a-z]|[A-Z])*[']([\t]|[ ])*$"))
                                         {
                                             Console.WriteLine("SI");
                                         }
@@ -168,7 +168,7 @@ namespace proyecto
 
 
                         }
-                        else if(Regex.IsMatch(txt[b],"([A-Z]*[()])"))
+                        else if(Regex.IsMatch(txt[b], "^([\t]|[ ])*([A-Z]*[()])([\t]|[ ])*$"))
                         {
                             Console.WriteLine("SI entró al segundo");
                             while (b != a)
@@ -231,7 +231,7 @@ namespace proyecto
                         }
                         //************************ PARTE DE LOS ERRORES
 
-                        else if(Regex.IsMatch(txt[b], "ERROR = [0-9][0-9]"))
+                        else if(Regex.IsMatch(txt[b], "^([\t]|[ ])*ERROR([\t]|[ ])*=([\t]|[ ])*[0-9][0-9]$"))
                         {
                             //No pasa nada, es un error
                         }

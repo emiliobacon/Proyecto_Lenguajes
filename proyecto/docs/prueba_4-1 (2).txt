@@ -1,0 +1,40 @@
+SETS 
+     LETRA   = 'A'..'Z'+'a'..'z'+'c'..'b'+'d'..'a'
+     DIGITO  = '0'..'9'+'a'..'z'
+
+TOKENS             
+     TOKEN 1= (DIGITO  DIGITO *              
+     TOKEN 2='"' CHARSET '"'|''' CHARSET '''                       
+     TOKEN  4  = '='
+     TOKEN  5  = '<''>'
+     TOKEN  6  = '<'
+     TOKEN  7  = '>'
+     TOKEN  8  = '>''='
+     TOKEN  9  = '<''='       
+     TOKEN  10  = '+'
+     TOKEN  11  = '-'
+     TOKEN  12  = 'O''R'                     
+     TOKEN  13  = '*
+
+     TOKEN 3= LETRA ( LETRA | DIGITO )*   { RESERVADAS() }
+
+ACTIONS
+RESERVADAS()
+{
+     18 = 'PROGRAM'
+     19 = 'INCLUDE'
+     20 = 'CONST'
+     21 = 'TYPE'
+     22 = 'VAR'
+     23 = 'RECORD'
+     24 = 'ARRAY'
+     25 = 'OF'
+     26 = 'PROCEDURE'
+     27 = 'FUNCTION'
+     28 = 'IF'
+     29 = 'THEN'
+     30 = 'ELSE'
+
+}
+
+ERROR = 54

@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="SETS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SETS\" />
+  </ItemGroup>
 </Project>

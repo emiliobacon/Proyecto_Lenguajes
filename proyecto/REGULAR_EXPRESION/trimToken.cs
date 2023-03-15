@@ -16,7 +16,7 @@ namespace proyecto.REGULAR_EXPRESION
 
         private static void trimText(string inputString)
         {
-            List<string> extractedTexts = ExtractTextBetweenSingleQuotes(inputString);
+            List<string> extractedTexts = GetStrings(inputString);
 
             foreach (string text in extractedTexts)
             {
@@ -25,21 +25,65 @@ namespace proyecto.REGULAR_EXPRESION
             }
         }
 
-        static List<string> ExtractTextBetweenSingleQuotes(string input)
+        public static List<string> GetStrings(string input)
         {
             List<string> strings = new List<string>();
 
-            Regex regex = new Regex("(?<=')[^']*(?=')|\\S+");
-            MatchCollection matches = regex.Matches(input);
-
-            foreach (Match match in matches)
+            int i = 0;
+            while (i < input.Length)
             {
-                strings.Add(match.Value);
+                if (input[i] == '\'')
+                {
+                    int j = i + 1;
+                    while (j < input.Length && input[j] != '\'')
+                    {
+                        j++;
+                    }
+                    if (j < input.Length && input[j] == '\'')
+                    {
+                        strings.Add(input.Substring(i, j - i + 1));
+                        i = j + 1;
+                    }
+                    else
+                    {
+                        strings.Add(input.Substring(i));
+                        i = input.Length;
+                    }
+                }
+                else if (char.IsWhiteSpace(input[i]))
+                {
+                    i++;
+                }
+                else
+                {
+                    int j = i;
+                    while (j < input.Length && !char.IsWhiteSpace(input[j]) && input[j] != '\'')
+                    {
+                        j++;
+                    }
+                    strings.Add(input.Substring(i, j - i));
+                    i = j;
+                }
             }
 
             return strings;
-
         }
+
+        //static List<string> ExtractTextBetweenSingleQuotes(string input)
+        //{
+        //    List<string> strings = new List<string>();
+
+        //    Regex regex = new Regex("(?<=')[^']*(?=')|\\S+");
+        //    MatchCollection matches = regex.Matches(input);
+
+        //    foreach (Match match in matches)
+        //    {
+        //        strings.Add(match.Value);
+        //    }
+
+        //    return strings;
+
+        //}
 
     }
 }

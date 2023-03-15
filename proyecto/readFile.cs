@@ -78,7 +78,7 @@ namespace proyecto
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
                             int lineNumber = b + 1;
-                            GenerateString.fillList(input);
+                            trimToken.extractToken(input);
                             Console.WriteLine("TOKEN valido linea " + lineNumber);
                         }
                         else

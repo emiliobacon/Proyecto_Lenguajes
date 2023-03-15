@@ -3,13 +3,22 @@ namespace proyecto.REGULAR_EXPRESION
 {
 	public class trimToken
 	{
-        public static void trimText(string inputString)
+        public static void extractToken(string token)
+        {
+            string limiter = "=";
+            int index = token.IndexOf(limiter);
+            string extractedToken = token.Substring(index + 1);
+
+            trimText(extractedToken);
+        }
+
+        private static void trimText(string inputString)
         {
             List<string> extractedTexts = ExtractTextBetweenSingleQuotes(inputString);
 
             foreach (string text in extractedTexts)
             {
-                GenerateString.fillList(text);
+                GenerateString.fillList("'" + text + "'");
             }
         }
 

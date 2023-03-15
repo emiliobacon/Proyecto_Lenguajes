@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+
 namespace proyecto.REGULAR_EXPRESION
 {
 	public class trimToken
@@ -18,39 +20,25 @@ namespace proyecto.REGULAR_EXPRESION
 
             foreach (string text in extractedTexts)
             {
-                GenerateString.fillList("'" + text + "'");
+
+                GenerateString.fillList(text);
             }
         }
 
-        static List<string> ExtractTextBetweenSingleQuotes(string inputString)
+        static List<string> ExtractTextBetweenSingleQuotes(string input)
         {
-            List<string> extractedTexts = new List<string>();
-            int startIndex = 0;
+            List<string> strings = new List<string>();
 
-            while (startIndex < inputString.Length)
+            Regex regex = new Regex("(?<=')[^']*(?=')|\\S+");
+            MatchCollection matches = regex.Matches(input);
+
+            foreach (Match match in matches)
             {
-                int openingQuoteIndex = inputString.IndexOf('\'', startIndex);
-                if (openingQuoteIndex == -1)
-                {
-                    break; // No more single quotes found
-                }
-
-                int closingQuoteIndex = inputString.IndexOf('\'', openingQuoteIndex + 1);
-                if (closingQuoteIndex == -1)
-                {
-                    break; // No matching closing quote found
-                }
-
-                int textStartIndex = openingQuoteIndex + 1;
-                int textLength = closingQuoteIndex - textStartIndex;
-
-                string extractedText = inputString.Substring(textStartIndex, textLength);
-                extractedTexts.Add(extractedText);
-
-                startIndex = closingQuoteIndex + 1;
+                strings.Add(match.Value);
             }
 
-            return extractedTexts;
+            return strings;
+
         }
 
     }

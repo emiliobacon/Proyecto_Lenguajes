@@ -13,17 +13,16 @@ namespace proyecto.REGULAR_EXPRESION
 			regularExpression.Add(token);
 		}
 
-		public static string printList()
+		public static void printList()
 		{
-			string concatenadedRegularExpression = "";
+			
 
 			for (int i = 0; i < regularExpression.Count; i++)
 			{
-                concatenadedRegularExpression += regularExpression[i];
+                Console.WriteLine("\n" + regularExpression[i]);
             }
 			
-			return concatenadedRegularExpression;
-
+			
 		}
 
 	}

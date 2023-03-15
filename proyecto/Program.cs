@@ -5,6 +5,6 @@ proyecto.readFile.Read();
 
 //proyecto.readFile.Read();
 
-Console.WriteLine(GenerateString.printList());
+GenerateString.printList();
 Console.ReadLine();
 

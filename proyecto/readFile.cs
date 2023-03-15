@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
-
+using proyecto.REGULAR_EXPRESION;
 
 namespace proyecto
 {
@@ -78,6 +78,7 @@ namespace proyecto
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
                             int lineNumber = b + 1;
+                            GenerateString.fillList(input);
                             Console.WriteLine("TOKEN valido linea " + lineNumber);
                         }
                         else

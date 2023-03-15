@@ -7,21 +7,21 @@ namespace proyecto.REGULAR_EXPRESION
 	{
 		public static List<string> regularExpression = new List<string>();
 
-		public static void fillList()
-		{
 
+		public static void fillList(string token)
+		{
+			regularExpression.Add(token);
 		}
 
 		public static string printList()
 		{
 			string concatenadedRegularExpression = "";
-			int a = 0;
 
-			while (regularExpression.Count == a)
+			for (int i = 0; i < regularExpression.Count; i++)
 			{
-				concatenadedRegularExpression += regularExpression[a];
-				a++;
-			}
+                concatenadedRegularExpression += regularExpression[i];
+            }
+			
 			return concatenadedRegularExpression;
 
 		}

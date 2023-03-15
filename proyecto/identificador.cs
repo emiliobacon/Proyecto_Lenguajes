@@ -25,7 +25,7 @@ namespace proyecto
 
                 readSets.checkSETS(identificadorReal, reglaEvaluar, b);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Error en linea: " + (b + 1));
             }

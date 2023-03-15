@@ -11,9 +11,8 @@ namespace proyecto
         public static void Read()
         {
 
-
             List<string> txt = new List<string>();
-            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/prueba_4-1 (2).txt";
+            string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -29,12 +28,11 @@ namespace proyecto
                 }
             }
 
-           
-           
             int c = 0; // Variable para salir de los whiles
             int b = 0;//  Variable que recorre la lista con el while
             int d = 0;//  Variable para salir de algunos whiles
             int e = 0;//  Variable que me indicará si se encontró al menos 1 error
+
             while (b <= a)
             {
                 if (Convert.ToString(txt[b].Trim()) == "")
@@ -270,16 +268,14 @@ namespace proyecto
 
                 b++;
             }
+
             if(e==0)
             {
                 int lineNumber = b + 1;
-                Console.WriteLine("Eror en la línea: " + lineNumber+". Se necesita al menos un error en la gramatica.");
+                Console.WriteLine("Eror en la línea: " + lineNumber );
             }
             Console.WriteLine("El proceso de lectura terminó.");
-            //  b++;
         }
-
-
     }
 }
 

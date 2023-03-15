@@ -9,8 +9,10 @@
 
   <ItemGroup>
     <None Remove="SETS\" />
+    <None Remove="REGULAR_EXPRESION\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SETS\" />
+    <Folder Include="REGULAR_EXPRESION\" />
   </ItemGroup>
 </Project>

@@ -10,7 +10,9 @@ namespace proyecto.REGULAR_EXPRESION
 
 		public static void fillList(string token)
 		{
+
 			regularExpression.Add(token);
+			
 		}
 
 		public static void printList()

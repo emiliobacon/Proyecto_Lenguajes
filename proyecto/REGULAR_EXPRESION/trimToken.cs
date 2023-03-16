@@ -20,9 +20,9 @@ namespace proyecto.REGULAR_EXPRESION
 
             foreach (string text in extractedTexts)
             {
-
                 GenerateString.fillList(text);
             }
+            GenerateString.fillList("|");
         }
 
         public static List<string> GetStrings(string input)
@@ -56,12 +56,21 @@ namespace proyecto.REGULAR_EXPRESION
                 }
                 else
                 {
+                    int z = 0; 
                     int j = i;
                     while (j < input.Length && !char.IsWhiteSpace(input[j]) && input[j] != '\'')
                     {
+                        z++;
                         j++;
                     }
+
+                    if (z < i)
+                    {
+                        strings.Add(".");
+                    }
+                    
                     strings.Add(input.Substring(i, j - i));
+                    
                     i = j;
                 }
             }

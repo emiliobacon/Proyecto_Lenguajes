@@ -10,9 +10,15 @@
   <ItemGroup>
     <None Remove="SETS\" />
     <None Remove="REGULAR_EXPRESION\" />
+    <None Remove="Fase_2\" />
+    <None Remove="Fase_2\Node\" />
+    <None Remove="Fase_2\Expression_Tree\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SETS\" />
     <Folder Include="REGULAR_EXPRESION\" />
+    <Folder Include="Fase_2\" />
+    <Folder Include="Fase_2\Node\" />
+    <Folder Include="Fase_2\Expression_Tree\" />
   </ItemGroup>
 </Project>

@@ -15,6 +15,8 @@ namespace expression_tree
 
         public string last;
         public string follow;
+        public string numHoja;
+
         public string nullable;
 
         public Node(string data)

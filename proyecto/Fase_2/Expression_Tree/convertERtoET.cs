@@ -1,4 +1,5 @@
-﻿using System;
+﻿using proyecto.Fase_2;
+using System;
 
 namespace expression_tree
 {
@@ -79,6 +80,7 @@ namespace expression_tree
             }
 
             //pila_S.Pop();
+            TablaLastFollow.GenerateTable(pila_S.Pop());
         }
 
         //PASO 6

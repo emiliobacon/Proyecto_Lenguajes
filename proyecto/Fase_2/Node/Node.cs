@@ -12,12 +12,12 @@ namespace expression_tree
         public Node father;
         public Node left;
         public Node right;
-
-        public string last;
-        public string follow;
+        
+        public string c1; // first
+        public string c2; // last 
         public string numHoja;
 
-        public string nullable;
+        public bool nullable;
 
         public Node(string data)
         {

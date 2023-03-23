@@ -18,7 +18,6 @@ namespace expression_tree
                 //PASO 2
                 string token = tokens[i];
 
-
                 switch (token)
                 {
                     //PASO 4
@@ -70,8 +69,10 @@ namespace expression_tree
                     {
                         //d.	Hacer “pop” a la pila S y asignarlo como hijo derecho de temp
                         newNode.right = pila_S.Pop();
+                        newNode.right.father = newNode;
                         //e.	Hacer “pop” a la pila S y asignarlo como hijo izquierdo de temp
                         newNode.left = pila_S.Pop();
+                        newNode.left.father = newNode;
                         //f.	Hacer “push” a la pila S con el árbol temp
                         pila_S.Push(newNode);
                     }
@@ -93,6 +94,7 @@ namespace expression_tree
             {
                 //Hacer “pop” de S y asignarlo como hijo izquierdo
                 newNode.left = pila_S.Pop();
+                newNode.left.father = newNode;
 
                 //Hacer “push” a la pila S con el nuevo árbol generado de op
                 pila_S.Push(newNode);
@@ -113,7 +115,9 @@ namespace expression_tree
                         if (pila_S.Count > 1)
                         {
                             newNode.right = pila_S.Pop();
+                            newNode.right.father = newNode;
                             newNode.left = pila_S.Pop();
+                            newNode.left.father = newNode;
 
                             pila_S.Push(newNode);
                         }
@@ -137,7 +141,9 @@ namespace expression_tree
                         Node newNode = new Node(pila_T.Pop());
 
                         newNode.right = pila_S.Pop();
+                        newNode.right.father = newNode;
                         newNode.left = pila_S.Pop();
+                        newNode.left.father = newNode;
 
                         pila_S.Push(newNode);
                     }

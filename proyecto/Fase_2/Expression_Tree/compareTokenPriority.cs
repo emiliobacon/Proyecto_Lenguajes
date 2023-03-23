@@ -1,29 +1,30 @@
-﻿using System;
-namespace expression_tree
+﻿namespace expression_tree
 {
-    public class compareTokenPriority
+    public abstract class CompareTokenPriority
     {
-        public static Dictionary<string, int> priorityMap;
+        private static Dictionary<string, int>? _priorityMap;
 
-        public static int compararPrioridad(string token, string comp)
+        public static int CompararPrioridad(string token, string comp)
         {
             // Inicializa el diccionario con los símbolos y sus prioridades
-            priorityMap = new Dictionary<string, int>();
-            priorityMap["*"] = 2;
-            priorityMap["+"] = 2;
-            priorityMap["?"] = 2;
-            priorityMap["."] = 3;
-            priorityMap["|"] = 4;
-            priorityMap["("] = 1;
+            _priorityMap = new Dictionary<string, int>();
+            
+            _priorityMap["*"] = 2;
+            _priorityMap["+"] = 2;
+            _priorityMap["?"] = 2;
+            _priorityMap["."] = 3;
+            _priorityMap["|"] = 4;
+            _priorityMap["("] = 1;
 
-            int priority1 = priorityMap[token];
-            int priority2 = priorityMap[comp];
-
-            if (priority1 > priority2)
+            var priority1 = _priorityMap[token];
+            var priority2 = _priorityMap[comp];
+            
+            
+            if (priority1 < priority2)
             {
                 return 1;
             }
-            else if (priority1 < priority2)
+            else if (priority1 > priority2)
             {
                 return 0;
             }
@@ -35,4 +36,3 @@ namespace expression_tree
         }
     }
 }
-

@@ -104,7 +104,7 @@ namespace expression_tree
             {
                 if (pila_T.Peek() != "(")
                 {
-                    if (compareTokenPriority.compararPrioridad(token, pila_T.Peek()) == 0)
+                    if (CompareTokenPriority.CompararPrioridad(token, pila_T.Peek()) == 0)
                     {
                         Node newNode = new Node(pila_T.Pop());
 

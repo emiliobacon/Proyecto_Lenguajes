@@ -1,7 +1,7 @@
 ﻿
 using proyecto.REGULAR_EXPRESION;
 
-proyecto.readFile.Read();
+proyecto.ReadFile.read();
 
 //proyecto.readFile.Read();
 

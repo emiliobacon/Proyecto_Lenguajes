@@ -5,14 +5,14 @@ using proyecto.REGULAR_EXPRESION;
 
 namespace proyecto
 {
-    public class readFile
+    public abstract class ReadFile
     {
 
-        public static void Read()
+        public static void read()
         {
 
             List<string> txt = new List<string>();
-            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+            string filePath = "/Users/emilio/Desktop/Proyecto_Lenguajes/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -41,7 +41,7 @@ namespace proyecto
                     
                 }
 
-                    if (Convert.ToString(txt[b].Trim()) == "SETS")
+                if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
                     while (b != a)
                     {

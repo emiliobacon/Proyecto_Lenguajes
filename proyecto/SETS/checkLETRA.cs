@@ -8,6 +8,7 @@ namespace proyecto
 
 		public static void checkLetra(string line, int b)
 		{
+			//ARREGLAR
 			if (Regex.IsMatch(line.Trim(), @"('[a-zA-Z]'\s)*(\+|\.\.)\s*)*"))
 			{
 				int lineNumber = b + 1;

@@ -17,7 +17,7 @@ TOKENS
      TOKEN  12  = 'O''R'                     
      TOKEN  13  = '*
 
-     TOKEN 3= LETRA ( LETRA | DIGITO )*   { RESERVADAS() }
+     TOKEN 3= LETRA ( LETRA | DIGITO ) *   { RESERVADAS() }
 
 ACTIONS
 RESERVADAS()

@@ -12,13 +12,13 @@ namespace proyecto
         {
             int contadorLineas = 0;
             List<string> txt = new List<string>();
-<<<<<<< HEAD
+
             string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
 
-=======
+
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
->>>>>>> 757188d2db0276e9b44f86c8118874b42c07c5b4
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+
             int a = 0;
             // Abre el archivo utilizando StreamReader
             using (StreamReader reader = new StreamReader(filePath))
@@ -45,10 +45,7 @@ namespace proyecto
                     b++;
                     
                 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 757188d2db0276e9b44f86c8118874b42c07c5b4
                 if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
                     while (b != a)
@@ -92,11 +89,11 @@ namespace proyecto
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
                             int lineNumber = b + 1;
-<<<<<<< HEAD
+
                             trimToken.extractToken(input, contadorLineas, true);
-=======
-                            trimToken.extractToken(input);//EXTRAE EL TOKEN
->>>>>>> 757188d2db0276e9b44f86c8118874b42c07c5b4
+
+                            //EXTRAE EL TOKEN
+
                             Console.WriteLine("TOKEN valido linea " + lineNumber);
                             contadorLineas++;
                         }

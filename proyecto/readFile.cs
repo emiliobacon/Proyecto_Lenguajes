@@ -10,7 +10,7 @@ namespace proyecto
 
         public static void Read()
         {
-
+            int contadorLineas = 0;
             List<string> txt = new List<string>();
             string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
 
@@ -40,8 +40,7 @@ namespace proyecto
                     b++;
                     
                 }
-
-                    if (Convert.ToString(txt[b].Trim()) == "SETS")
+                if (Convert.ToString(txt[b].Trim()) == "SETS")
                 {
                     while (b != a)
                     {
@@ -60,12 +59,18 @@ namespace proyecto
 
                 if (Convert.ToString(txt[b].Trim()) == "TOKENS")
                 {
+
                     while (b != a)
                     {
                         b++;
                         if (Convert.ToString(txt[b].Trim()) == "ACTIONS")
                         {
                             break;
+                        }
+                        if (Convert.ToString(txt[b].Trim()) == "")
+                        {
+                            
+                            continue; 
                         }
 
                         //Expresión regular
@@ -78,8 +83,9 @@ namespace proyecto
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
                             int lineNumber = b + 1;
-                            trimToken.extractToken(input);
+                            trimToken.extractToken(input, contadorLineas, true);
                             Console.WriteLine("TOKEN valido linea " + lineNumber);
+                            contadorLineas++;
                         }
                         else
                         {
@@ -90,6 +96,8 @@ namespace proyecto
 
                         }
                     }
+                    trimToken.RemoveText();
+                    trimToken.extractToken(") #", contadorLineas, false);
                 }
                 else
                 {

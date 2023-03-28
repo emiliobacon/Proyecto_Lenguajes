@@ -5,16 +5,20 @@ namespace proyecto.REGULAR_EXPRESION
 {
 	public class trimToken
 	{
-        public static void extractToken(string token)
+        public static void extractToken(string token, int contador, bool escribirOr)
         {
+            
             string limiter = "=";
             int index = token.IndexOf(limiter);
             string extractedToken = token.Substring(index + 1);
-
-            trimText(extractedToken);
+            
+            if (contador == 0) extractedToken = "(" + extractedToken;
+            
+            trimText(extractedToken, escribirOr);
         }
 
-        private static void trimText(string inputString)
+        private static void trimText(string inputString, bool escribirOr)
+
         {
             List<string> extractedTexts = GetStrings(inputString);
 
@@ -22,8 +26,16 @@ namespace proyecto.REGULAR_EXPRESION
             {
                 GenerateString.fillList(text);
             }
-            GenerateString.fillList("|");
+            if(escribirOr== true) GenerateString.fillList("|");
+
         }
+        public static void RemoveText()
+
+        {
+            GenerateString.RemoveLastAtList();
+
+        }
+
 
         //private static void trimText(string inputString)
         //{
@@ -45,10 +57,10 @@ namespace proyecto.REGULAR_EXPRESION
         //}
 
         //casos
-        //1. no se concatena si es simbolo no terminal
+        //1. no se concatena si es simbolo no terminal  ya
         //2. agregar el simbolo # al final + ()
-        //3. que no agarre la llave { o actions 
-        //5. colocar una concatenacion entre cada simbolo terminal
+        //3. que no agarre la llave { o actions   ya
+        //5. colocar una concatenacion entre cada simbolo terminal   ya
         //6. hacer al recorrido prefijo (recorre hijo izquiero, derecho y de ultimo en medio)
 
         //public static List<string> GetStrings(string input)
@@ -113,8 +125,25 @@ namespace proyecto.REGULAR_EXPRESION
                     }
                     if (j < input.Length && input[j] == '\'')
                     {
-                        strings.Add(input.Substring(i, j - i + 1));
-                        i = j + 1;
+                        if (input.Length > j + 1)
+                        {
+                            if (input[j + 1] == '\'')
+                            {
+                                strings.Add(input.Substring(i, j - i + 2));
+                                i = j + 2;
+                            }
+                            else
+                            {
+                                strings.Add(input.Substring(i, j - i + 1));
+                                i = j + 1;
+                            }
+
+                        }
+                        else
+                        {
+                            strings.Add(input.Substring(i, j - i + 1));
+                            i = j + 1;
+                        }
                     }
                     else
                     {
@@ -124,7 +153,7 @@ namespace proyecto.REGULAR_EXPRESION
                 }
                 else if (char.IsWhiteSpace(input[i]))
                 {
-                    if (input[i] == ' ' && (i + 1 >= input.Length || input[i + 1] != '*' && input[i + 1] != '+' && input[i + 1] != '?' && input[i + 1] != '.' && input[i + 1] != '|' && input[i + 1] != '(' && input[i + 1] != ')'))
+                    if (input[i] == ' ' && (i + 1 >= input.Length || input[i + 1] != '*' && input[i + 1] != '+' && input[i + 1] != '?' && input[i + 1] != '.' && input[i + 1] != '|' && input[i - 1] != '|' && input[i - 1] != '(' && input[i + 1] != ')'))
                     {
                         strings.Add(".");
                     }

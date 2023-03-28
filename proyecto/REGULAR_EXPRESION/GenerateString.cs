@@ -12,10 +12,13 @@ namespace proyecto.REGULAR_EXPRESION
 		{
 
 			regularExpression.Add(token);
-			
 		}
+        public static void RemoveLastAtList()
+        {
+			regularExpression.RemoveAt(regularExpression.Count-1);
+        }
 
-		public static void printList()
+        public static void printList()
 		{
 			
 

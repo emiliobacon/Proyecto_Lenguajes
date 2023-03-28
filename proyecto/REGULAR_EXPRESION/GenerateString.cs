@@ -14,7 +14,7 @@ namespace proyecto.REGULAR_EXPRESION
 			regularExpression.Add(token);
 			
 		}
-
+		//Acá debo llamar a llenar el arbol
 		public static void printList()
 		{
 			

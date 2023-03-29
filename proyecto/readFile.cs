@@ -111,6 +111,7 @@ namespace proyecto
                     trimToken.RemoveText();
                     //aca es false para que no me agregue el ultimo | ya habiendo agregado el ).#
                     trimToken.extractToken(") #", contadorLineas, false);
+                    GenerateString.sendToTree();
                 }
                 else
                 {

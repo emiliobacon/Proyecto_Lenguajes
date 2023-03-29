@@ -1,4 +1,5 @@
-﻿using System;
+﻿using expression_tree;
+using System;
 using System.Collections.Generic;
 
 namespace proyecto.REGULAR_EXPRESION
@@ -19,6 +20,10 @@ namespace proyecto.REGULAR_EXPRESION
 			regularExpression.RemoveAt(regularExpression.Count-1);
         }
 
+		public static void sendToTree()
+		{
+			convert_to_RET.generateRegularExpressionTree(regularExpression);
+		}
 		//Acá debo llamar a llenar el arbol
 		public static void printList()
 

@@ -14,7 +14,7 @@ namespace proyecto.REGULAR_EXPRESION
 			regularExpression.Add(token);
 		}
 
-        public static void RemoveLastAtList()
+        public static void RemoveLastAtList() // metodo para eliminar la ultima fila
         {
 			regularExpression.RemoveAt(regularExpression.Count-1);
         }
@@ -23,14 +23,10 @@ namespace proyecto.REGULAR_EXPRESION
 		public static void printList()
 
 		{
-			
-
 			for (int i = 0; i < regularExpression.Count; i++)
 			{
                 Console.WriteLine("\n" + regularExpression[i]);
             }
-			
-			
 		}
 
 	}

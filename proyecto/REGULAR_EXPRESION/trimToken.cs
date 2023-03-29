@@ -12,6 +12,7 @@ namespace proyecto.REGULAR_EXPRESION
             int index = token.IndexOf(limiter);
             string extractedToken = token.Substring(index + 1);
             
+            // me agrega el parentesis para manejar precedencia
             if (contador == 0) extractedToken = "(" + extractedToken;
             
             trimText(extractedToken, escribirOr);
@@ -26,35 +27,15 @@ namespace proyecto.REGULAR_EXPRESION
             {
                 GenerateString.fillList(text);
             }
+            //solo agrega el | cuando se le envia true
             if(escribirOr== true) GenerateString.fillList("|");
 
         }
+        //quita el ultimo elemento de la lista
         public static void RemoveText()
-
         {
             GenerateString.RemoveLastAtList();
-
         }
-
-
-        //private static void trimText(string inputString)
-        //{
-        //    List<string> extractedTexts = GetStrings(inputString);
-
-        //    for (int i = 0; i < extractedTexts.Count; i++)
-        //    {
-        //        string text = extractedTexts[i];
-        //        if (i == 0) // add '(' to the beginning of the first line
-        //        {
-        //            text = "(" + text;
-        //        }
-        //        if (i == extractedTexts.Count - 1) // add ").#" to the end of the last line
-        //        {
-        //            text += ").#";
-        //        }
-        //        GenerateString.fillList(text);
-        //    }
-        //}
 
         //casos
         //1. no se concatena si es simbolo no terminal  ya
@@ -127,7 +108,7 @@ namespace proyecto.REGULAR_EXPRESION
                     {
                         if (input.Length > j + 1)
                         {
-                            if (input[j + 1] == '\'')
+                            if (input[j + 1] == '\'') //aca valido mi problema conlas ''' CHARSET '''
                             {
                                 strings.Add(input.Substring(i, j - i + 2));
                                 i = j + 2;
@@ -151,7 +132,7 @@ namespace proyecto.REGULAR_EXPRESION
                         i = input.Length;
                     }
                 }
-                else if (char.IsWhiteSpace(input[i]))
+                else if (char.IsWhiteSpace(input[i])) //Agregar las concatenaciones
                 {
                     if (input[i] == ' ' && (i + 1 >= input.Length || input[i + 1] != '*' && input[i + 1] != '+' && input[i + 1] != '?' && input[i + 1] != '.' && input[i + 1] != '|' && input[i - 1] != '|' && input[i - 1] != '(' && input[i + 1] != ')'))
                     {
@@ -168,29 +149,12 @@ namespace proyecto.REGULAR_EXPRESION
                         z++;
                         j++;
                     }
-
-                    //if (z < i)
-                    //{
-                    //    //if (input[i] == ' ')
-                    //    //{
-                    //    //    if (i < input.Length)
-                    //    //    {
-                    //    //        if (input[i + 1] != '*')
-                    //    //        {
-                    //    //            strings.Add(".");
-                    //    //        }
-
-                    //    //    }
-
-                    //    //}
-                    //}
                     strings.Add(input.Substring(i, j - i));
                     i = j;
                 }
             }
             return strings;
         }
-
     }
 }
 

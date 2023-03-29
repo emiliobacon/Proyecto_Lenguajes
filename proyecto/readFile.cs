@@ -90,6 +90,7 @@ namespace proyecto
                         {
                             int lineNumber = b + 1;
 
+                            //manda cada token (el contador lineas solo me sirve para encontrar la primera linea)
                             trimToken.extractToken(input, contadorLineas, true);
 
                             //EXTRAE EL TOKEN
@@ -106,7 +107,9 @@ namespace proyecto
 
                         }
                     }
+                    //uso el remove para quitar el ultimo | de la lista
                     trimToken.RemoveText();
+                    //aca es false para que no me agregue el ultimo | ya habiendo agregado el ).#
                     trimToken.extractToken(") #", contadorLineas, false);
                 }
                 else

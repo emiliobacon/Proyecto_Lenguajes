@@ -10,10 +10,15 @@ namespace proyecto
 
         public static void read()
         {
-
+            int contadorLineas = 0;
             List<string> txt = new List<string>();
+
+            string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
+
+
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+
             int a = 0;
             // Abre el archivo utilizando StreamReader
             using (StreamReader reader = new StreamReader(filePath))
@@ -60,12 +65,18 @@ namespace proyecto
 
                 if (Convert.ToString(txt[b].Trim()) == "TOKENS")
                 {
+
                     while (b != a)
                     {
                         b++;
                         if (Convert.ToString(txt[b].Trim()) == "ACTIONS")
                         {
                             break;
+                        }
+                        if (Convert.ToString(txt[b].Trim()) == "")
+                        {
+                            
+                            continue; 
                         }
 
                         //Expresión regular
@@ -78,8 +89,14 @@ namespace proyecto
                         if (match.Success || Regex.IsMatch(input, cadenaVacia))
                         {
                             int lineNumber = b + 1;
-                            trimToken.extractToken(input);//EXTRAE EL TOKEN
+
+                            //manda cada token (el contador lineas solo me sirve para encontrar la primera linea)
+                            trimToken.extractToken(input, contadorLineas, true);
+
+                            //EXTRAE EL TOKEN
+
                             Console.WriteLine("TOKEN valido linea " + lineNumber);
+                            contadorLineas++;
                         }
                         else
                         {
@@ -90,13 +107,16 @@ namespace proyecto
 
                         }
                     }
-
+                    //uso el remove para quitar el ultimo | de la lista
+                    trimToken.RemoveText();
+                    //aca es false para que no me agregue el ultimo | ya habiendo agregado el ).#
+                    trimToken.extractToken(") #", contadorLineas, false);
+                    GenerateString.sendToTree();
                 }
                 else
                 {
                     Console.WriteLine("Error en la línea " + (b + 1));
                 }
-
 
                 //Verifica que la palabra "ACTIONS" esté 
                 if (Convert.ToString(txt[b].Trim()) == "ACTIONS")

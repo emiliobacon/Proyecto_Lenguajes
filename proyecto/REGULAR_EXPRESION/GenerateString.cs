@@ -1,4 +1,5 @@
-﻿using System;
+﻿using expression_tree;
+using System;
 using System.Collections.Generic;
 
 namespace proyecto.REGULAR_EXPRESION
@@ -12,19 +13,25 @@ namespace proyecto.REGULAR_EXPRESION
 		{
 
 			regularExpression.Add(token);
-			
+		}
+
+        public static void RemoveLastAtList() // metodo para eliminar la ultima fila
+        {
+			regularExpression.RemoveAt(regularExpression.Count-1);
+        }
+
+		public static void sendToTree()
+		{
+			convert_to_RET.generateRegularExpressionTree(regularExpression);
 		}
 		//Acá debo llamar a llenar el arbol
 		public static void printList()
-		{
-			
 
+		{
 			for (int i = 0; i < regularExpression.Count; i++)
 			{
                 Console.WriteLine("\n" + regularExpression[i]);
             }
-			
-			
 		}
 
 	}

@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,14 +12,20 @@ namespace proyecto.Fase_2
     internal class TablaLastFollow
     {
         private int contador = 1;
-       // string[] follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
+        // string[] follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
         //Creo una lista para los follows
-        List<string> Flist = new List<string>();//Follow
+        List<string> FTransicion = new List<string>();//Follow
         List<string> Slist = new List<string>();//Simbolos
-
-        //NO SE USAN LAS LISTAS, PERO NO ME ACUERDO SI LAS PUSE. ASÍ QUE MEJOR NO TOCO NADA 
+        
+        List<List<string>> Tabla = new List<List<string>>();
+       
         string[] follo;
-
+        string[] simbolos;
+        string[,] estados;
+        string[] transiciones;
+        int cantidadFilas=0;
+       
+        string CadenaLibre;
         public static void GenerateTable(Node arbol)
         {
            
@@ -29,14 +37,165 @@ namespace proyecto.Fase_2
 
             tabla.GenerateFollow(arbol);
             tabla.ImprimirFollow();
+            tabla.EncontrarTerminales(arbol);
+            tabla.Once();
+            tabla.ImprimirTransiciones(arbol);
+            tabla.ImprimirTabla();
             
         }
+        public void Once()
+        {
+            HashSet<string> list = new HashSet<string>(Slist);
+            simbolos=list.ToArray();
+
+           
+        }
+        public void GetNumHoja(Node? arbol, string refTermino, string refEstado)
+        {
+            if (arbol != null)
+            {
+
+
+                GetNumHoja(arbol.left, refTermino, refEstado);
+                GetNumHoja(arbol.right, refTermino, refEstado);
+                //Nodo actual, Es una hoja
+                if (arbol.left == null && arbol.right == null)
+                {
+                    if(arbol.data==refTermino)
+                    {
+                        if(refEstado==arbol.numHoja) 
+                        {
+                            CadenaLibre += follo[Convert.ToInt32(refEstado)]+",";
+                           
+                        }
+                    }
+                   
+                }
+            }
+            
+        }
+        public void ImprimirTabla()
+        {
+           
+           
+           Console.Write("\n\n\nTabla de Transiciones");
+            for(int i=0; i<simbolos.Length; i++)
+            {
+                Console.Write("\t\t" + "|"+simbolos[i]+"|");
+            }
+            Console.WriteLine();
+            for (int j = 0; j < FTransicion.Count(); j++)
+            {
+                Console.Write("S" + j + ": {" + FTransicion.ElementAt(j) + "} | ");//d
+                for (int i = 0; i < Tabla.Count(); i++)
+                {
+                    Console.Write("\t| {" + Tabla.ElementAt(j).ElementAt(i) + "} | ");//d
+                }
+                Console.WriteLine();
+            }
+        }
+        public void ImprimirTransiciones(Node? arbol)
+        {
+            //Mi primer estado es el c1 de arbol.
+            FTransicion.Add(arbol.c1);
+           // transiciones = arbol.c1.Split(',');
+            int a = 0;
+            int b = 0;//b va a ser mi condicion de salida
+           
+            while (b==0)
+            {
+                List<string> fila = new List<string>();
+                transiciones = FTransicion.ElementAt(a).Split(',');
+                for (int i = 0; i < simbolos.Length; i++)
+                {
+                   
+                   
+                    for (int j = 0; j < transiciones.Length; j++)
+                    {
+                        GetNumHoja(arbol, simbolos[i], transiciones[j]);
+                        
+                    }
+                    //***********************************************************
+                    //Quitar la duplicidad
+                    string cadena ="";
+                    string[] arreglo;
+                    string[] NoDuplicado;
+
+                    cadena = CadenaLibre;
+                    arreglo = cadena.Split(',');
+                    Array.Sort(arreglo);
+                    NoDuplicado = arreglo.Distinct().ToArray();
+                    CadenaLibre = string.Join(",", NoDuplicado);
+                    CadenaLibre = CadenaLibre.Trim(',');
+                   //***********************************************************
+                   //Corroborar si ya existe
+                   if(FTransicion.Contains(CadenaLibre))
+                    {
+
+                    }
+                   else
+                    {
+                        FTransicion.Add(CadenaLibre);
+                        a++;
+                    }
+                    fila.Add(CadenaLibre);
+                    CadenaLibre = "";
+
+                    
+                }
+                Tabla.Add(fila);
+                cantidadFilas++;
+                
+                //Realiza el primer recorrido
+
+                //Revisar que ya no hayan estados nuevos
+
+                if(cantidadFilas == FTransicion.Count())
+                {
+                    b++;
+                }
+
+              
+
+            }
+           
+        }
+        public void EncontrarTerminales(Node? arbol)
+        {
+            //1.Recorre los hijos y guardalos. Estos van a ser tus terminales. No guardés los que ya están contenidos. 
+            //2. Matriz
+            //3.
+
+
+            if (arbol != null)
+            {
+
+
+                EncontrarTerminales(arbol.left);
+                EncontrarTerminales(arbol.right);
+                //Nodo actual, Es una hoja
+                if (arbol.left == null && arbol.right == null)
+                {
+                    if (arbol.data == "#")
+                    {
+
+                    }
+                    else
+                    {
+                        Slist.Add(arbol.data);
+                    }
+                }
+            }
+            }
+
         public void ImprimirFollow()
         {
             string cadena;
             string[] arreglo;
             string[] NoDuplicado;
- 
+
+            Console.WriteLine("Tabla follow\n");
+
             for (int i = 0; i < follo.Length; i++)
             {
                 if (follo[i]!=null)
@@ -47,7 +206,7 @@ namespace proyecto.Fase_2
                     NoDuplicado = arreglo.Distinct().ToArray();
                     follo[i] = string.Join(",", NoDuplicado);
                     follo[i] = follo[i].Trim(',');
-                    Console.WriteLine(follo[i]);
+                    Console.WriteLine((i+1)+" | "+follo[i]);
                 }
             
             }
@@ -74,8 +233,8 @@ namespace proyecto.Fase_2
                         string[] simbolo = arbol.left?.c2.Split(',');
                         for (int i = 0; i < simbolo.Length; i++)
                         {
-                         int indice = Convert.ToInt16(simbolo[i]);
-                                follo[indice] = follo[indice] + arbol.left.c1 + ",";
+                            int indice = Convert.ToInt16(simbolo[i]);
+                            follo[indice] = follo[indice] + arbol.left.c1 + ",";
                             
 
                         }
@@ -178,7 +337,7 @@ namespace proyecto.Fase_2
 
             }
             follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
-
+           // simbolos= new string[contador];
         }
 
         public void PO_FandL(Node arbol)//PostOrder para First y last

@@ -206,7 +206,11 @@ namespace proyecto.Fase_2
                     NoDuplicado = arreglo.Distinct().ToArray();
                     follo[i] = string.Join(",", NoDuplicado);
                     follo[i] = follo[i].Trim(',');
-                    Console.WriteLine((i+1)+" | "+follo[i]);
+                    Console.WriteLine((i)+" | "+follo[i]);
+                }
+                else
+                {
+                    Console.WriteLine((i) + " | " );
                 }
             
             }

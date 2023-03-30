@@ -13,7 +13,7 @@ namespace proyecto
             int contadorLineas = 0;
             List<string> txt = new List<string>();
 
-            string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
+            string filePath = "/Users/emilio/Desktop/Proyecto_Lenguajes/proyecto/docs/GRAMATICA.txt";
 
 
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";

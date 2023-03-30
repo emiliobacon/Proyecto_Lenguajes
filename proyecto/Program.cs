@@ -20,7 +20,7 @@ tokens.Add(")");
 tokens.Add("+");
 tokens.Add(".");
 tokens.Add("0");
-tokens.Add("?");
+tokens.Add("?"); 
 tokens.Add("|");
 tokens.Add("1");
 tokens.Add("+");

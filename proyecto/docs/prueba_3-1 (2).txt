@@ -1,6 +1,6 @@
 SETS
 	DIGITO  = '0'..'9'
-TOKEN
+TOKENS
                    
      TOKEN  4  = '='     
      TOKEN  10  = '+'

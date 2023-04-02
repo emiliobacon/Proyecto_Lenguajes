@@ -3,6 +3,8 @@ using System;
 
 namespace expression_tree
 {
+
+    //april 1 
     public class convert_to_RET
     {
         //Pila de tokens T
@@ -75,6 +77,7 @@ namespace expression_tree
                         newNode.left.father = newNode;
                         //f.	Hacer “push” a la pila S con el árbol temp
                         pila_S.Push(newNode);
+
                     }
                 }
 

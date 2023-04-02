@@ -16,19 +16,19 @@ namespace proyecto.Fase_2
         //Creo una lista para los follows
         List<string> FTransicion = new List<string>();//Follow
         List<string> Slist = new List<string>();//Simbolos
-        
+
         List<List<string>> Tabla = new List<List<string>>();
-       
+
         string[] follo;
         string[] simbolos;
         string[,] estados;
         string[] transiciones;
-        int cantidadFilas=0;
-       
+        int cantidadFilas = 0;
+
         string CadenaLibre;
         public static void GenerateTable(Node arbol)
         {
-           
+
 
             //Recorrer el arbol en post fix para encontrar los hijos.
             TablaLastFollow tabla = new TablaLastFollow();
@@ -41,14 +41,14 @@ namespace proyecto.Fase_2
             tabla.Once();
             tabla.ImprimirTransiciones(arbol);
             tabla.ImprimirTabla();
-            
+
         }
         public void Once()
         {
             HashSet<string> list = new HashSet<string>(Slist);
-            simbolos=list.ToArray();
+            simbolos = list.ToArray();
 
-           
+
         }
         public void GetNumHoja(Node? arbol, string refTermino, string refEstado)
         {
@@ -61,27 +61,27 @@ namespace proyecto.Fase_2
                 //Nodo actual, Es una hoja
                 if (arbol.left == null && arbol.right == null)
                 {
-                    if(arbol.data==refTermino)
+                    if (arbol.data == refTermino)
                     {
-                        if(refEstado==arbol.numHoja) 
+                        if (refEstado == arbol.numHoja)
                         {
-                            CadenaLibre += follo[Convert.ToInt32(refEstado)]+",";
-                           
+                            CadenaLibre += follo[Convert.ToInt32(refEstado)] + ",";
+
                         }
                     }
-                   
+
                 }
             }
-            
+
         }
         public void ImprimirTabla()
         {
-           
-           
-           Console.Write("\n\n\nTabla de Transiciones");
-            for(int i=0; i<simbolos.Length; i++)
+
+
+            Console.Write("\n\n\nTabla de Transiciones");
+            for (int i = 0; i < simbolos.Length; i++)
             {
-                Console.Write("\t\t" + "|"+simbolos[i]+"|");
+                Console.Write("\t\t" + "|" + simbolos[i] + "|");
             }
             Console.WriteLine();
             for (int j = 0; j < FTransicion.Count(); j++)
@@ -98,26 +98,26 @@ namespace proyecto.Fase_2
         {
             //Mi primer estado es el c1 de arbol.
             FTransicion.Add(arbol.c1);
-           // transiciones = arbol.c1.Split(',');
+            // transiciones = arbol.c1.Split(',');
             int a = 0;
             int b = 0;//b va a ser mi condicion de salida
-           
-            while (b==0)
+
+            while (b == 0)
             {
                 List<string> fila = new List<string>();
                 transiciones = FTransicion.ElementAt(a).Split(',');
                 for (int i = 0; i < simbolos.Length; i++)
                 {
-                   
-                   
+
+
                     for (int j = 0; j < transiciones.Length; j++)
                     {
                         GetNumHoja(arbol, simbolos[i], transiciones[j]);
-                        
+
                     }
                     //***********************************************************
                     //Quitar la duplicidad
-                    string cadena ="";
+                    string cadena = "";
                     string[] arreglo;
                     string[] NoDuplicado;
 
@@ -127,13 +127,13 @@ namespace proyecto.Fase_2
                     NoDuplicado = arreglo.Distinct().ToArray();
                     CadenaLibre = string.Join(",", NoDuplicado);
                     CadenaLibre = CadenaLibre.Trim(',');
-                   //***********************************************************
-                   //Corroborar si ya existe
-                   if(FTransicion.Contains(CadenaLibre))
+                    //***********************************************************
+                    //Corroborar si ya existe
+                    if (FTransicion.Contains(CadenaLibre))
                     {
 
                     }
-                   else
+                    else
                     {
                         FTransicion.Add(CadenaLibre);
                         a++;
@@ -141,24 +141,24 @@ namespace proyecto.Fase_2
                     fila.Add(CadenaLibre);
                     CadenaLibre = "";
 
-                    
+
                 }
                 Tabla.Add(fila);
                 cantidadFilas++;
-                
+
                 //Realiza el primer recorrido
 
                 //Revisar que ya no hayan estados nuevos
 
-                if(cantidadFilas == FTransicion.Count())
+                if (cantidadFilas == FTransicion.Count())
                 {
                     b++;
                 }
 
-              
+
 
             }
-           
+
         }
         public void EncontrarTerminales(Node? arbol)
         {
@@ -186,7 +186,7 @@ namespace proyecto.Fase_2
                     }
                 }
             }
-            }
+        }
 
         public void ImprimirFollow()
         {
@@ -198,7 +198,7 @@ namespace proyecto.Fase_2
 
             for (int i = 0; i < follo.Length; i++)
             {
-                if (follo[i]!=null)
+                if (follo[i] != null)
                 {
                     cadena = follo[i];
                     arreglo = cadena.Split(',');
@@ -206,19 +206,19 @@ namespace proyecto.Fase_2
                     NoDuplicado = arreglo.Distinct().ToArray();
                     follo[i] = string.Join(",", NoDuplicado);
                     follo[i] = follo[i].Trim(',');
-                    Console.WriteLine((i)+" | "+follo[i]);
+                    Console.WriteLine((i) + " | " + follo[i]);
                 }
                 else
                 {
-                    Console.WriteLine((i) + " | " );
+                    Console.WriteLine((i) + " | ");
                 }
-            
+
             }
         }
         public void GenerateFollow(Node? arbol)
         {
-            
-            
+
+
             if (arbol != null)
             {
 
@@ -229,20 +229,20 @@ namespace proyecto.Fase_2
                 if (arbol.left == null && arbol.right == null)
                 {
 
-                   //Es una hoja, no hace nada
+                    //Es una hoja, no hace nada
                 }
                 else if (arbol.data == "*")
                 {
 
-                        string[] simbolo = arbol.left?.c2.Split(',');
-                        for (int i = 0; i < simbolo.Length; i++)
-                        {
-                            int indice = Convert.ToInt16(simbolo[i]);
-                            follo[indice] = follo[indice] + arbol.left.c1 + ",";
-                            
+                    string[] simbolo = arbol.left?.c2.Split(',');
+                    for (int i = 0; i < simbolo.Length; i++)
+                    {
+                        int indice = Convert.ToInt16(simbolo[i]);
+                        follo[indice] = follo[indice] + arbol.left.c1 + ",";
 
-                        }
-  
+
+                    }
+
                 }
                 else if (arbol.data == "|" || arbol.data == "?")
                 {
@@ -255,7 +255,7 @@ namespace proyecto.Fase_2
                         string[] simbolo = arbol.left?.c2.Split(',');
                         for (int i = 0; i < simbolo.Length; i++)
                         {
-                           
+
                             int indice = Convert.ToInt16(simbolo[i]);
                             follo[indice] = follo[indice] + arbol.left.c1 + ",";
 
@@ -264,9 +264,9 @@ namespace proyecto.Fase_2
                     else
                     {
                         string[] simbolo = arbol.left?.c2.Split(',');
-                        for(int i = 0;i<simbolo.Length;i++)
+                        for (int i = 0; i < simbolo.Length; i++)
                         {
-                           
+
                             int indice = Convert.ToInt16(simbolo[i]);
                             follo[indice] = follo[indice] + arbol.right.c1 + ",";
 
@@ -277,35 +277,35 @@ namespace proyecto.Fase_2
 
             }
 
-           
+
 
 
         }
         //--------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------
         //--------------------------------------------------------------------------------------------------------
-        public void PostOrder(Node? arbol) 
+        public void PostOrder(Node? arbol)
         {
-           
-            if(arbol!=null) 
+
+            if (arbol != null)
             {
 
-               
+
                 PostOrder(arbol.left);
                 PostOrder(arbol.right);
                 //Nodo actual, Es una hoja
-                if(arbol.left==null && arbol.right ==null)
+                if (arbol.left == null && arbol.right == null)
                 {
-                   
+
                     arbol.numHoja = Convert.ToString(contador);
                     arbol.c1 = Convert.ToString(contador);
                     arbol.c2 = Convert.ToString(contador);
                     arbol.nullable = false;
                     contador++;
-                    
-                  //  Console.WriteLine("Hoja: " +arbol.numHoja);
+
+                    //  Console.WriteLine("Hoja: " +arbol.numHoja);
                 }
-                else if( arbol.data=="*")
+                else if (arbol.data == "*")
                 {
                     arbol.nullable = true;
                 }
@@ -325,7 +325,7 @@ namespace proyecto.Fase_2
                 }
                 else if (arbol.data == "." || arbol.data == "+")
                 {
-                    if(arbol.right==null)
+                    if (arbol.right == null)
                     {
                         arbol.nullable = true;
                     }
@@ -336,12 +336,12 @@ namespace proyecto.Fase_2
                             arbol.nullable = true;
                         }
                     }
-                  
+
                 }
 
             }
             follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
-           // simbolos= new string[contador];
+                                         // simbolos= new string[contador];
         }
 
         public void PO_FandL(Node arbol)//PostOrder para First y last
@@ -358,11 +358,11 @@ namespace proyecto.Fase_2
                 }
                 else if (arbol.data == "|" || arbol.data == "?")
                 {
-                    if(arbol.right == null)
+                    if (arbol.right == null)
                     {
                         //Firts
-                        arbol.c1 = Convert.ToString(arbol.left?.c1 );
-                        arbol.c2 = Convert.ToString(arbol.left?.c2 );
+                        arbol.c1 = Convert.ToString(arbol.left?.c1);
+                        arbol.c2 = Convert.ToString(arbol.left?.c2);
                     }
                     else
                     {
@@ -371,7 +371,7 @@ namespace proyecto.Fase_2
                         //Last
                         arbol.c2 = Convert.ToString(arbol.left?.c2 + "," + arbol.right?.c2);
                     }
-                  
+
                 }
                 else if (arbol.data == "*")
                 {
@@ -382,12 +382,12 @@ namespace proyecto.Fase_2
                 }
                 else if (arbol.data == "." || arbol.data == "+")
                 {
-                    
-                    if(arbol.right==null)
+
+                    if (arbol.right == null)
                     {
                         //First
                         arbol.c1 = arbol.left?.c1;
-                        arbol.c2= arbol.left?.c2;
+                        arbol.c2 = arbol.left?.c2;
                     }
                     else
                     {
@@ -411,7 +411,7 @@ namespace proyecto.Fase_2
                             arbol.c2 = arbol.right?.c2;
                         }
                     }
-                   
+
                 }
             }
         }

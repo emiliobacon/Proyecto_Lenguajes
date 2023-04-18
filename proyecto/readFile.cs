@@ -13,11 +13,13 @@ namespace proyecto
             int contadorLineas = 0;
             List<string> txt = new List<string>();
 
-            string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
+           // string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
 
 
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-            //string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
+            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_3-1 (2).txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -51,9 +53,13 @@ namespace proyecto
                     while (b != a)
                     {
                         b++;
-                        if (Convert.ToString(txt[b].Trim()) == "TOKENS")
+                        if (Convert.ToString(txt[b].Trim()) == "TOKENS")//Validar "TOKEN"
                         {
                             break;
+                        }
+                        else if(Convert.ToString(txt[b].Trim()) == "TOKEN")
+                        {
+                            Console.WriteLine("ERROR");
                         }
                         if (Convert.ToString(txt[b].Trim()) != "")
                         {

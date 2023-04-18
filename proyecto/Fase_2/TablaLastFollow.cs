@@ -16,7 +16,7 @@ namespace proyecto.Fase_2
         //Creo una lista para los follows
         List<string> FTransicion = new List<string>();//Follow
         List<string> Slist = new List<string>();//Simbolos
-        
+        //CREO QUE NO USO LAS LISTAS, PERO NO RECUERDO ASÍ QUE NO LAS TOCO.
         List<List<string>> Tabla = new List<List<string>>();
        
         string[] follo;
@@ -87,7 +87,7 @@ namespace proyecto.Fase_2
             for (int j = 0; j < FTransicion.Count(); j++)
             {
                 Console.Write("S" + j + ": {" + FTransicion.ElementAt(j) + "} | ");//d
-                for (int i = 0; i < Tabla.Count(); i++)
+                for (int i = 0; i < simbolos.Length; i++)//tabla.count()
                 {
                     Console.Write("\t| {" + Tabla.ElementAt(j).ElementAt(i) + "} | ");//d
                 }
@@ -135,8 +135,16 @@ namespace proyecto.Fase_2
                     }
                    else
                     {
-                        FTransicion.Add(CadenaLibre);
-                        a++;
+                       if(CadenaLibre=="")
+                        {
+                        }
+                        else
+                        {
+                            FTransicion.Add(CadenaLibre);
+                            a++;
+                        }
+                        //FTransicion.Add(CadenaLibre);
+                        //a++;
                     }
                     fila.Add(CadenaLibre);
                     CadenaLibre = "";
@@ -158,7 +166,8 @@ namespace proyecto.Fase_2
               
 
             }
-           
+
+
         }
         public void EncontrarTerminales(Node? arbol)
         {

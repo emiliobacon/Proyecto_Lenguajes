@@ -1,17 +1,17 @@
 
 TOKENS             
-     TOKEN 1 = DIGITO DIGITO *                                 
+     TOKEN 1 = DIGITO  DIGITO *                                 
      TOKEN  4  ='='
      
 
      TOKEN  6  = 			'<'
      TOKEN  7  = '>'
-     TOKEN  8  = '>' '='
+     TOKEN  8  = '>''='
 
 
 
 
-     TOKEN  9  							=	 '<' '='       
+     TOKEN  9  							=	 '<''='       
      TOKEN  10  = '+'
      TOKEN  						11  = '-'
    

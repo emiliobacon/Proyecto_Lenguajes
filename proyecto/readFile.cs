@@ -13,13 +13,13 @@ namespace proyecto
             int contadorLineas = 0;
             List<string> txt = new List<string>();
 
-           // string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
+            // string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
 
 
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
-           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
-            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_3-1 (2).txt";
+            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
+            string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -45,7 +45,7 @@ namespace proyecto
                 if (Convert.ToString(txt[b].Trim()) == "")
                 {
                     b++;
-                    
+
                 }
 
                 if (Convert.ToString(txt[b].Trim()) == "SETS")
@@ -57,7 +57,7 @@ namespace proyecto
                         {
                             break;
                         }
-                        else if(Convert.ToString(txt[b].Trim()) == "TOKEN")
+                        else if (Convert.ToString(txt[b].Trim()) == "TOKEN")
                         {
                             Console.WriteLine("ERROR");
                         }
@@ -65,7 +65,7 @@ namespace proyecto
                         {
                             identificador.getIdentificador(txt[b], b);
                         }
-                        
+
                     }
                 }
 
@@ -81,8 +81,8 @@ namespace proyecto
                         }
                         if (Convert.ToString(txt[b].Trim()) == "")
                         {
-                            
-                            continue; 
+
+                            continue;
                         }
 
                         //Expresión regular
@@ -205,7 +205,7 @@ namespace proyecto
                                         txt[b] = Convert.ToString(txt[b].Trim());
 
 
-                                        if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([\t]|[ ])*([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$")) 
+                                        if (Regex.IsMatch(txt[b], "(([\t]|[ ])*[0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([\t]|[ ])*([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$"))
                                         {
                                             int lineNumber = b + 1;
                                             Console.WriteLine("ACTION valido linea " + lineNumber);
@@ -232,7 +232,7 @@ namespace proyecto
                                         else
                                         {
                                             Console.WriteLine("Se esperaba otro valor en la línea " + (b + 1));
-                                           
+
                                         }
 
                                     }
@@ -296,10 +296,10 @@ namespace proyecto
                 b++;
             }
 
-            if(e==0)
+            if (e == 0)
             {
                 int lineNumber = b + 1;
-                Console.WriteLine("Eror en la línea: " + lineNumber );
+                Console.WriteLine("Eror en la línea: " + lineNumber);
             }
             Console.WriteLine("El proceso de lectura terminó.");
         }

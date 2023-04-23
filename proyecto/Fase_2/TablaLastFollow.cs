@@ -11,7 +11,7 @@ namespace proyecto.Fase_2
 {
     internal class TablaLastFollow
     {
-        private int contador = 1;
+        private int _contador = 1;
         // string[] follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
         //Creo una lista para los follows
         List<string> FTransicion = new List<string>();//Follow
@@ -306,11 +306,11 @@ namespace proyecto.Fase_2
                 if(arbol.left==null && arbol.right ==null)
                 {
                    
-                    arbol.numHoja = Convert.ToString(contador);
-                    arbol.c1 = Convert.ToString(contador);
-                    arbol.c2 = Convert.ToString(contador);
+                    arbol.numHoja = Convert.ToString(_contador);
+                    arbol.c1 = Convert.ToString(_contador);
+                    arbol.c2 = Convert.ToString(_contador);
                     arbol.nullable = false;
-                    contador++;
+                    _contador++;
                     
                   //  Console.WriteLine("Hoja: " +arbol.numHoja);
                 }
@@ -349,7 +349,7 @@ namespace proyecto.Fase_2
                 }
 
             }
-            follo = new string[contador];//Un arreglo con la cantidad de nodos hoja
+            follo = new string[_contador];//Un arreglo con la cantidad de nodos hoja
            // simbolos= new string[contador];
         }
 

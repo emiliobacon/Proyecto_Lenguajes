@@ -11,9 +11,16 @@ namespace proyecto
         public static void Main()
         {
             List<string> ListaActions = new List<string>();
+            string codigo = "";
+            codigo += "System.out.println(\"Ingrese la cadena: \");\n";
 
-            Console.WriteLine("Ingrese la cadena:  ");
+            Console.WriteLine(codigo);
             string cadena = Console.ReadLine();
+            codigo += "Scanner scanner = new Scanner(System.in);\n";
+            codigo += "String cadena = scanner.nextLine();\n";
+
+
+
 
             ListaActions = read();
             var resultado = validarReservadas.validar(ListaActions, cadena);
@@ -22,7 +29,12 @@ namespace proyecto
 
             if ( res == true)
             {
+                codigo += "System.out.println("+cadena + " = " + res1.ToString()+ ")\n";
+                Console.WriteLine(codigo);
+
+
                 Console.WriteLine(cadena + " = " + res1.ToString());
+                
             }
             else
             {

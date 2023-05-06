@@ -22,7 +22,7 @@ namespace proyecto
 
             if ( res == true)
             {
-                Console.WriteLine(cadena + "= " + res1.ToString());
+                Console.WriteLine(cadena + " = " + res1.ToString());
             }
             else
             {

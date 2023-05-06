@@ -41,8 +41,53 @@ namespace proyecto.Fase_2
             tabla.Once();
             tabla.ImprimirTransiciones(arbol);
             tabla.ImprimirTabla();
-            
+          tabla.CrearSwitch();
         }
+
+        //FASE 3
+
+        //*******************************
+        void CrearSwitch()
+        {
+            string codigo = ""; //Mi variable de codigo para java
+
+            //puedes brindarme una corrección
+
+
+            //Creo el switch
+            codigo += "switch (estado) {\n";
+            //Agrego los casos
+            for (int i = 0; i < FTransicion.Count(); i++)
+            {
+                codigo += "case \"" + FTransicion[i] + "\":{\n";
+                codigo += "switch (simbolo) {\n";
+                for (int j = 0; j < simbolos.Length; j++)
+                {
+                    if (Tabla[i][j] != "")
+                    {
+                        codigo += "case " + simbolos[j] + ":{\n";
+                        codigo+="estado= \"" + Tabla[i][j]+"\";\n";
+                        codigo+="comman+=lexem;";
+                        codigo += "}break;\n";
+                        
+                    }
+                }
+
+                codigo += "}";//Cierro el switch anidado
+            }
+          
+            
+            //Agrego el default
+            codigo += "default:\n";
+            codigo += "break;\n";
+            //Cierro el switch
+            codigo += "}\n";
+            //Imprimo el codigo
+            Console.WriteLine(codigo);
+        }
+
+
+        //*******************************
         public void Once()
         {
             HashSet<string> list = new HashSet<string>(Slist);

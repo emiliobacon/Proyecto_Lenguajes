@@ -10,7 +10,7 @@ using proyecto.REGULAR_EXPRESION;
 
 //Acá voy a poner mi lista de pruebas 
 
-List<string> tokens = new List<string>();
+/*List<string> tokens = new List<string>();
 tokens.Add("(");
 tokens.Add("(");
 tokens.Add("a");
@@ -44,7 +44,7 @@ tokens.Add(")");
 tokens.Add(")");
 tokens.Add(".");
 
-tokens.Add("#");
+tokens.Add("#");*/
 
 //convert_to_RET.generateRegularExpressionTree(tokens);
 

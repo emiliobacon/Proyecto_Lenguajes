@@ -17,9 +17,9 @@ namespace proyecto
 
 
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+             string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
             // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
-            string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
+          //  string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader

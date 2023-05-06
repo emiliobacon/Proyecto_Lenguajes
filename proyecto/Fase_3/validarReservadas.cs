@@ -10,8 +10,10 @@ namespace proyecto.Fase_3
     {
         public static bool validar(List<string> lista, string palabraVerificar)
         {
-            bool verificacion= true;
+            bool verificacion = true;
+            palabraVerificar = palabraVerificar.ToLower();
             lista = ObtenerValores(lista);
+            lista = lista.Select(p => p.ToLower()).ToList();
 
             foreach (var item in lista)
             {
@@ -27,6 +29,8 @@ namespace proyecto.Fase_3
             }
             return verificacion;
         }
+
+
         public static List<string> ObtenerValores(List<string> lista)
         {
             List<string> valores = new List<string>();

@@ -49,8 +49,8 @@ tokens.Add("#");*/
 //convert_to_RET.generateRegularExpressionTree(tokens);
 
 GenerateString.printList();
-
-proyecto.ReadFile.read();
+proyecto.ReadFile.Main();
+//proyecto.ReadFile.read();
 
 Console.ReadLine();
 

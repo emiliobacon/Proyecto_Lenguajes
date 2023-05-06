@@ -2,22 +2,40 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using proyecto.REGULAR_EXPRESION;
+using proyecto.Fase_3;
 
 namespace proyecto
 {
     public abstract class ReadFile
     {
+        public static void Main()
+        {
+            List<string> ListaActions = new List<string>();
 
-        public static void read()
+            Console.WriteLine("Ingrese la cadena:  ");
+            string cadena = Console.ReadLine();
+
+            ListaActions = read();
+
+            if (validarReservadas.validar(ListaActions, cadena) == true)
+            {
+                Console.WriteLine(cadena + " aceptada");
+            }
+            else
+            {
+                //verificar Parte Roberto
+            }
+
+        }
+        public static List<string> read()
         {
             int contadorLineas = 0;
+            List<string> ListaActions = new List<string>();
             List<string> txt = new List<string>();
 
-            // string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
-
-
+            string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-             string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
             // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
           //  string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
 
@@ -148,6 +166,8 @@ namespace proyecto
                                         if (Regex.IsMatch(txt[b], "([\t]|[ ])*([0-9][0-9])([\t]|[ ])*=([\t]|[ ])*'([a-z]|[A-Z])*([\t]|[ ])*'([\t]|[ ])*$"))
                                         {
                                             int lineNumber = b + 1;
+                                            
+                                            ListaActions.Add(txt[b].Trim());
                                             Console.WriteLine("ACTION valido linea " + lineNumber);
                                         }
                                         else if (Convert.ToString(txt[b].Trim()) == "}")
@@ -302,6 +322,7 @@ namespace proyecto
                 Console.WriteLine("Eror en la línea: " + lineNumber);
             }
             Console.WriteLine("El proceso de lectura terminó.");
+            return ListaActions;
         }
     }
 }

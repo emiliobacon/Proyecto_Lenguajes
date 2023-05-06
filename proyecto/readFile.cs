@@ -16,14 +16,17 @@ namespace proyecto
             string cadena = Console.ReadLine();
 
             ListaActions = read();
+            var resultado = validarReservadas.validar(ListaActions, cadena);
+            bool res = resultado.Item1;
+            string res1 = resultado.Item2;
 
-            if (validarReservadas.validar(ListaActions, cadena) == true)
+            if ( res == true)
             {
-                Console.WriteLine(cadena + " aceptada");
+                Console.WriteLine(cadena + "= " + res1.ToString());
             }
             else
             {
-                //verificar Parte Roberto
+                Console.WriteLine(cadena + " no aceptada");
             }
 
         }

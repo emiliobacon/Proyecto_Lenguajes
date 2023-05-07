@@ -17,7 +17,7 @@ namespace proyecto.Fase_3
 
             List<string> atributos = resultado.atributos;
             lista = resultado.valores;
-            lista = lista.Select(p => p.ToLower()).ToList();
+            
             int contador = 0;
 
             foreach (var item in lista)
@@ -37,10 +37,6 @@ namespace proyecto.Fase_3
             return (verificacion, elementoEnPosicion);
         }
 
-        
-
-
-
         public static (List<string> atributos, List<string> valores) ObtenerValores(List<string> lista)
         {
             List<string> atributos = new List<string>();
@@ -56,10 +52,10 @@ namespace proyecto.Fase_3
                     if (elemento[i] == '=')
                     {
                         atributo = elemento.Substring(0, i);
-                        atributo = atributo.Trim();
+                        atributo = atributo.Trim().ToLower();
 
                         valor = elemento.Substring(i + 1);
-                        valor = valor.Trim('\'', ' ');
+                        valor = valor.Trim('\'', ' ').ToLower();
                         break;
                     }
                 }
@@ -67,12 +63,8 @@ namespace proyecto.Fase_3
                 atributos.Add(atributo);
                 valores.Add(valor);
             }
-
             return (atributos, valores);
         }
-
-
-
     }
 
 

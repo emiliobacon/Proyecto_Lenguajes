@@ -12,15 +12,9 @@ namespace proyecto
         {
             List<string> ListaActions = new List<string>();
             string codigo = "";
-            codigo += "System.out.println(\"Ingrese la cadena: \");\n";
-
-            Console.WriteLine(codigo);
+            
             string cadena = Console.ReadLine();
-            codigo += "Scanner scanner = new Scanner(System.in);\n";
-            codigo += "String cadena = scanner.nextLine();\n";
-
-
-
+            
 
             ListaActions = read();
             var resultado = validarReservadas.validar(ListaActions, cadena);
@@ -30,17 +24,14 @@ namespace proyecto
             if ( res == true)
             {
                 codigo += "System.out.println("+cadena + " = " + res1.ToString()+ ")\n";
-                Console.WriteLine(codigo);
-
-
                 Console.WriteLine(cadena + " = " + res1.ToString());
                 
             }
             else
             {
-                Console.WriteLine(cadena + " no aceptada");
+                
             }
-
+            
         }
         public static List<string> read()
         {
@@ -183,6 +174,7 @@ namespace proyecto
                                             int lineNumber = b + 1;
                                             
                                             ListaActions.Add(txt[b].Trim());
+
                                             Console.WriteLine("ACTION valido linea " + lineNumber);
                                         }
                                         else if (Convert.ToString(txt[b].Trim()) == "}")
@@ -337,8 +329,63 @@ namespace proyecto
                 Console.WriteLine("Eror en la línea: " + lineNumber);
             }
             Console.WriteLine("El proceso de lectura terminó.");
+            pasarJava(ListaActions);
             return ListaActions;
+        }
+
+        public static void pasarJava(List<string> lista)
+        {
+            string codigo = "";
+            var resultado = validarReservadas.ObtenerValores(lista);
+            List<string> atributos = resultado.atributos;
+            List<string> valores = resultado.valores;
+
+            
+
+            
+            codigo += "public static void main(String[] args)\n";
+            codigo += "{";
+            codigo += "ArrayList<String> atributos = new ArrayList<String>();\n";
+            codigo += "ArrayList<String> valores = new ArrayList<String>();\n";
+            codigo += "boolean verificacion = true;\n";
+            codigo += "String elementoEnPosicion = \"\";\n";
+            codigo += "int contador = 0;\n";
+
+
+
+
+            foreach (var item in atributos)
+            {
+                codigo += "atributos.add(" + "\"" + item + "\"" + ");\n";
+            }
+            foreach (var item in valores)
+            {
+                codigo += "valores.add(" + "\"" + item + "\"" + ");\n";
+            }
+            codigo += "System.out.println(\"Ingrese la cadena: \");\n";
+            codigo += "Scanner scanner = new Scanner(System.in);\n";
+            codigo += "String palabraVerificar = scanner.nextLine();\n";
+            codigo += "palabraVerificar = palabraVerificar.toLowerCase();\n";
+
+            // for
+            codigo += "for (String item : valores) {\r\n        if (item.equals(palabraVerificar)) {\r\n   " +
+                " verificacion = true;\r\n            elementoEnPosicion = atributos.get(contador);\r\n\t\tSystem.out.println(item + \" = \" + elementoEnPosicion);\r\n    " +
+                "        break;\r\n        } else {\r\n            verificacion = false;\r\n        }\r\n        contador++;\r\n    }";
+
+            codigo += "";
+            codigo += "}";
+            Console.WriteLine(codigo);
+
+
+
+
+
+
+
+
         }
     }
 }
+
+
 

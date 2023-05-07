@@ -3,6 +3,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using proyecto.REGULAR_EXPRESION;
 using proyecto.Fase_3;
+using proyecto.Fase_2;
+using System.Windows.Input;
 
 namespace proyecto
 {
@@ -10,8 +12,34 @@ namespace proyecto
     {
         public static void Main()
         {
-            List<string> ListaActions = new List<string>();
+
             string codigo = "";
+            //string _filePath = "C:\\Users\\Roberto Moya\\Desktop\\Java2.txt";
+            string _filePath = "C:\\Users\\Roberto Moya\\Documents\\NetBeansProjects\\JavaApplication5\\src\\javaapplication5\\JavaApplication5.java";
+
+            codigo += "package javaapplication5;\n";
+            codigo += "import java.util.Scanner;\n";
+            codigo += "import java.util.ArrayList;\n";
+            codigo += "public class JavaApplication5 {\n";
+            codigo += "public static void main(String[] args)\n";
+            codigo += "{";
+            codigo += "ArrayList<String> atributos = new ArrayList<String>();\n";
+            codigo += "ArrayList<String> valores = new ArrayList<String>();\n";
+            codigo += "boolean verificacion = true;\n";
+            codigo += "String elementoEnPosicion = \"\";\n";
+            codigo += "int contador = 0;\n";
+            codigo += "String lexem=\"\";\n";
+            codigo += "  String estado=\"1,3,6,9,10,12,13,14,16,18,19,20,22,23,26,29,32,35,37,39,40,41,42,43,44,45,46,47,49,50,51,53\";\n";
+            codigo += "String comman=\"\";\n";
+            codigo += "String simbolo=\"\";";
+
+
+
+
+            File.WriteAllText(_filePath, codigo);
+           // File.AppendAllText(_filePath, codigo);
+            List<string> ListaActions = new List<string>();
+           
             
             string cadena = Console.ReadLine();
             
@@ -21,27 +49,25 @@ namespace proyecto
             bool res = resultado.Item1;
             string res1 = resultado.Item2;
 
-            if ( res == true)
-            {
-                codigo += "System.out.println("+cadena + " = " + res1.ToString()+ ")\n";
-                Console.WriteLine(cadena + " = " + res1.ToString());
-                
-            }
-            else
-            {
-                
-            }
-            
+
+            //******************
+
+           
+           
+
         }
         public static List<string> read()
         {
+
+
+
             int contadorLineas = 0;
             List<string> ListaActions = new List<string>();
             List<string> txt = new List<string>();
 
-            string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
+            //string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+             string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
             // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
           //  string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
 
@@ -343,15 +369,7 @@ namespace proyecto
             
 
             
-            codigo += "public static void main(String[] args)\n";
-            codigo += "{";
-            codigo += "ArrayList<String> atributos = new ArrayList<String>();\n";
-            codigo += "ArrayList<String> valores = new ArrayList<String>();\n";
-            codigo += "boolean verificacion = true;\n";
-            codigo += "String elementoEnPosicion = \"\";\n";
-            codigo += "int contador = 0;\n";
-
-
+           
 
 
             foreach (var item in atributos)
@@ -372,14 +390,21 @@ namespace proyecto
                 " verificacion = true;\r\n            elementoEnPosicion = atributos.get(contador);\r\n\t\tSystem.out.println(item + \" = \" + elementoEnPosicion);\r\n    " +
                 "        break;\r\n        } else {\r\n            verificacion = false;\r\n        }\r\n        contador++;\r\n    }";
 
-            codigo += "";
             codigo += "}";
+            codigo += "}";
+
             Console.WriteLine(codigo);
+            //TablaLastFollow s = new TablaLastFollow();
+            //s.CrearSwitch(codigo);
+            string _filePath = "C:\\Users\\Roberto Moya\\Documents\\NetBeansProjects\\JavaApplication5\\src\\javaapplication5\\JavaApplication5.java";
+            //  string _filePath = "C:\\Users\\Roberto Moya\\Desktop\\Java2.txt";
+            File.AppendAllText(_filePath, codigo);
+            //  File.WriteAllText(_filePath, String.Empty);
 
-
-
-
-
+            /*  using (StreamWriter writer = new StreamWriter(_filePath))
+              {
+                  writer.WriteLine(codigo);
+              }*/
 
 
 

@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Net;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.Design;
 
 namespace proyecto.Fase_2
 {
@@ -41,21 +43,22 @@ namespace proyecto.Fase_2
             tabla.Once();
             tabla.ImprimirTransiciones(arbol);
             tabla.ImprimirTabla();
-          tabla.CrearSwitch();
+         tabla.CrearSwitch();
         }
 
         //FASE 3
 
         //*******************************
-        void CrearSwitch()
+        public  void CrearSwitch()
         {
             string codigo = ""; //Mi variable de codigo para java
-
+          string _filePath = "C:\\Users\\Roberto Moya\\Documents\\NetBeansProjects\\JavaApplication5\\src\\javaapplication5\\JavaApplication5.java";
+            //string _filePath = "C:\\Users\\Roberto Moya\\Desktop\\Java2.txt";
             //puedes brindarme una corrección
-
+            
 
             //Creo el switch
-            codigo += "switch (estado) {\n";
+            codigo += "\nswitch (estado) {\n";
             //Agrego los casos
             for (int i = 0; i < FTransicion.Count(); i++)
             {
@@ -65,15 +68,30 @@ namespace proyecto.Fase_2
                 {
                     if (Tabla[i][j] != "")
                     {
-                        codigo += "case " + simbolos[j] + ":{\n";
-                        codigo+="estado= \"" + Tabla[i][j]+"\";\n";
-                        codigo+="comman+=lexem;";
-                        codigo += "}break;\n";
+                        if (simbolos[j] == "'\"'")
+                                {
+                            codigo += "case \"" + "\\'\\\"\\'" + "\":{\n";
+                            codigo += "estado= \"" + Tabla[i][j] + "\";\n";
+                            codigo += "comman+=lexem;";
+                            codigo += "}break;\n";
+                        }
+                       else
+                        {
+                            codigo += "case \"" + simbolos[j] + "\":{\n";
+                            codigo += "estado= \"" + Tabla[i][j] + "\";\n";
+                            codigo += "comman+=lexem;";
+                            codigo += "}break;\n";
+                        }
+                       
                         
                     }
+                    
                 }
-
+                codigo += "default:\n";
+                codigo += "break;\n";
                 codigo += "}";//Cierro el switch anidado
+                codigo += "}";//Cierro el switch anidado
+                
             }
           
             
@@ -82,8 +100,14 @@ namespace proyecto.Fase_2
             codigo += "break;\n";
             //Cierro el switch
             codigo += "}\n";
+
+            //codigo += "}";
             //Imprimo el codigo
             Console.WriteLine(codigo);
+            //Escribo el codigo en el archivo con el append
+          
+             File.AppendAllText(_filePath, codigo);
+
         }
 
 

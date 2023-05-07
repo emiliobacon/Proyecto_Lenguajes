@@ -55,8 +55,8 @@ namespace proyecto.Fase_2
           string _filePath = "C:\\Users\\Roberto Moya\\Documents\\NetBeansProjects\\JavaApplication5\\src\\javaapplication5\\JavaApplication5.java";
             //string _filePath = "C:\\Users\\Roberto Moya\\Desktop\\Java2.txt";
             //puedes brindarme una corrección
-            
 
+            codigo += " \n String estado=\"" + FTransicion[0] +"\";\n";
             //Creo el switch
             codigo += "\nswitch (estado) {\n";
             //Agrego los casos
@@ -72,14 +72,14 @@ namespace proyecto.Fase_2
                                 {
                             codigo += "case \"" + "\\'\\\"\\'" + "\":{\n";
                             codigo += "estado= \"" + Tabla[i][j] + "\";\n";
-                            codigo += "comman+=lexem;";
+                            codigo += "System.out.println(\"Token\"+" + j + "+\" valido - \"+\""     + "\\'\\\"\\'" +"\"" + "); ";
                             codigo += "}break;\n";
                         }
                        else
                         {
                             codigo += "case \"" + simbolos[j] + "\":{\n";
                             codigo += "estado= \"" + Tabla[i][j] + "\";\n";
-                            codigo += "comman+=lexem;";
+                            codigo += "System.out.println(\"Token\"+" + j + "+\" valido - \"+\"" + ""+simbolos[j] + "\"" + "); ";
                             codigo += "}break;\n";
                         }
                        

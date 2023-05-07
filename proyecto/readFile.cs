@@ -28,32 +28,33 @@ namespace proyecto
             codigo += "boolean verificacion = true;\n";
             codigo += "String elementoEnPosicion = \"\";\n";
             codigo += "int contador = 0;\n";
-            codigo += "String lexem=\"\";\n";
-            codigo += "  String estado=\"1,3,6,9,10,12,13,14,16,18,19,20,22,23,26,29,32,35,37,39,40,41,42,43,44,45,46,47,49,50,51,53\";\n";
-            codigo += "String comman=\"\";\n";
+           
             codigo += "String simbolo=\"\";";
 
-
-
+            codigo += "\nSystem.out.println(\"Ingrese la cadena: \");\n";
+            codigo += "Scanner scanner = new Scanner(System.in);\n";
+            codigo += "String palabraVerificar = scanner.nextLine();\n";
+            codigo += "palabraVerificar = palabraVerificar.toLowerCase();\n";
+            codigo += "String[] pal=palabraVerificar.split(\"\\\\s+\");\r\npalabraVerificar=pal[0];\r\nsimbolo=pal[1];\n";
 
             File.WriteAllText(_filePath, codigo);
            // File.AppendAllText(_filePath, codigo);
             List<string> ListaActions = new List<string>();
-           
-            
-            string cadena = Console.ReadLine();
-            
 
+
+            // string cadena = Console.ReadLine();
             ListaActions = read();
-            var resultado = validarReservadas.validar(ListaActions, cadena);
+            /*
+            
+           // var resultado = validarReservadas.validar(ListaActions, cadena);
             bool res = resultado.Item1;
             string res1 = resultado.Item2;
-
+            */
 
             //******************
 
-           
-           
+
+
 
         }
         public static List<string> read()
@@ -67,9 +68,15 @@ namespace proyecto
 
             //string filePath = "C:\\Users\\megan\\OneDrive\\Escritorio\\Megan\\proyectos_oficial\\C#\\Proyecto_Lenguajes\\proyecto\\docs\\GRAMATICA.txt";
             //string filePath = "/Users/emilio/Desktop/proyecto/proyecto/docs/GRAMATICA.txt";
-             string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
-            // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
-          //  string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
+
+
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\GRAMATICA.txt";
+           // string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_2-1 (2).txt";
+            string filePath = "C:\\Users\\Roberto Moya\\Desktop\\ProyectoAutomatas\\proyecto\\docs\\prueba_3-1 (2).txt";
+
+
+
+            //  string filePath = "/Users/emilio/Desktop/Proyecto LFYA/proyecto/docs/GRAMATICA.txt";
 
             int a = 0;
             // Abre el archivo utilizando StreamReader
@@ -380,17 +387,14 @@ namespace proyecto
             {
                 codigo += "valores.add(" + "\"" + item + "\"" + ");\n";
             }
-            codigo += "System.out.println(\"Ingrese la cadena: \");\n";
-            codigo += "Scanner scanner = new Scanner(System.in);\n";
-            codigo += "String palabraVerificar = scanner.nextLine();\n";
-            codigo += "palabraVerificar = palabraVerificar.toLowerCase();\n";
+          
 
             // for
             codigo += "for (String item : valores) {\r\n        if (item.equals(palabraVerificar)) {\r\n   " +
-                " verificacion = true;\r\n            elementoEnPosicion = atributos.get(contador);\r\n\t\tSystem.out.println(item + \" = \" + elementoEnPosicion);\r\n    " +
-                "        break;\r\n        } else {\r\n            verificacion = false;\r\n        }\r\n        contador++;\r\n    }";
-
-            codigo += "}";
+                " verificacion = true;\r\n            elementoEnPosicion = atributos.get(contador);\r\n\t\tSystem.out.println(item + \" = \" + elementoEnPosicion);\r\n  System.out.println(\"Cadena valida.\");  " +
+                "        break;\r\n        } else {\r\n            verificacion = false;\r\n   }\r\n        contador++;\r\n    }";
+            codigo += "if(verificacion == false)\r\n        {\r\n             System.out.println(\"Cadena no valida.\");\r\n        }";
+            codigo += "\n}";
             codigo += "}";
 
             Console.WriteLine(codigo);

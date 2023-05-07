@@ -398,18 +398,11 @@ namespace proyecto
             codigo += "}";
 
             Console.WriteLine(codigo);
-            //TablaLastFollow s = new TablaLastFollow();
-            //s.CrearSwitch(codigo);
+        
             string _filePath = "C:\\Users\\Roberto Moya\\Documents\\NetBeansProjects\\JavaApplication5\\src\\javaapplication5\\JavaApplication5.java";
-            //  string _filePath = "C:\\Users\\Roberto Moya\\Desktop\\Java2.txt";
+   
             File.AppendAllText(_filePath, codigo);
-            //  File.WriteAllText(_filePath, String.Empty);
-
-            /*  using (StreamWriter writer = new StreamWriter(_filePath))
-              {
-                  writer.WriteLine(codigo);
-              }*/
-
+            
 
 
         }

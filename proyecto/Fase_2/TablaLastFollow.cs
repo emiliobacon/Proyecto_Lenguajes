@@ -72,7 +72,7 @@ namespace proyecto.Fase_2
                                 {
                             codigo += "case \"" + "\\'\\\"\\'" + "\":{\n";
                             codigo += "estado= \"" + Tabla[i][j] + "\";\n";
-                            codigo += "System.out.println(\"Token\"+" + j + "+\" valido - \"+\""     + "\\'\\\"\\'" +"\"" + "); ";
+                            codigo += "System.out.println(\"Token\"+" + j + "+\" valido - \"+\""     + "\\'\\\"\\'" +"\"X" + "); ";
                             codigo += "}break;\n";
                         }
                        else
